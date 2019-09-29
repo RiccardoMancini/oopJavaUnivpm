@@ -1,4 +1,4 @@
-package it.univpm.oopJava.Model;
+package it.univpm.JavaEsame.Model;
 
 public class HelloWorldClass {
 	
