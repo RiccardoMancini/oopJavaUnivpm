@@ -9,7 +9,7 @@ import it.univpm.JavaEsame.Model.HelloWorldClass;
 @RestController
 public class simpleRestController {
 	@GetMapping("/hello")
-	public HelloWorldClass exampleMethod(@RequestParam(name="param1", defaultValue="Prova") String param1) {
+	public HelloWorldClass exampleMethod(@RequestParam(name="param1", defaultValue="Prova")  String param1) {
 		return new HelloWorldClass("Riccardo","Mancini");
 	}
 
