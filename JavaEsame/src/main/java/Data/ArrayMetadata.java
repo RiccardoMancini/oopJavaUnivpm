@@ -1,6 +1,8 @@
-package it.univpm.JavaEsame.Model;
+package Data;
 
 import java.util.ArrayList;
+
+import it.univpm.JavaEsame.Model.Metadata;
 
 public class ArrayMetadata {
 	
