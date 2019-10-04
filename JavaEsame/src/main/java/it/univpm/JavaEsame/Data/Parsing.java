@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import it.univpm.JavaEsame.Model.ServiziPostali;
+
 public class Parsing {
 	
 	private ArrayList<ServiziPostali> spost;
@@ -11,14 +13,31 @@ public class Parsing {
 	private String str="";
 	
 	
-	public Parsing(String filename) throws IOException {
+	public Parsing()  {
 		
-		this.spost = ArrayData.getData();
-		csvReader = new BufferedReader(new FileReader(filename));
+		this.spost = new ArrayList<ServiziPostali>();                    
+		
+	
+	}
+	
+	public void parser(String filename) throws IOException
+	{
+		                    
+		this.csvReader = new BufferedReader(new FileReader(filename));
 		csvReader.readLine();
 		while((str = csvReader.readLine()) != null)
 		{
 			String[] row = str.split("[;,]");
+			
+			
+		/*	ArrayData.setData(new ArrayList<ServiziPostali>().add(new ServiziPostali(row[0],row[1],row[2],row[3], 
+	  				new float[] {new StringControl(row[4]).control(),
+ 							 new StringControl(row[5]).control(),
+ 							 new StringControl(row[6]).control(),
+ 							 new StringControl(row[7]).control(),
+ 							 new StringControl(row[8]).control(),
+ 							 new StringControl(row[9]).control()})));*/
+			
 			
 			spost.add(new ServiziPostali(row[0],row[1],row[2],row[3], 
 					  				new float[] {new StringControl(row[4]).control(),
@@ -27,10 +46,14 @@ public class Parsing {
 					  							 new StringControl(row[7]).control(),
 					  							 new StringControl(row[8]).control(),
 					  							 new StringControl(row[9]).control()}));
+			
+			
+			ArrayData.setData(spost);                                                      // Very importante!!!!!!!!
+			
+			
 		}
 		
 		csvReader.close();
-	
 	}
 	
 

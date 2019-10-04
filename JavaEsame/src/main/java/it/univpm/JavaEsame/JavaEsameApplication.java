@@ -16,15 +16,12 @@ public class JavaEsameApplication {
 		
 		URL url = new URL("http://data.europa.eu/euodp/data/api/3/action/package_show?id=tkbI4e1nPSh1HAhvoIhqQ");
 		Buffer buff = new Buffer(url);
-		ArrayData data = new ArrayData();
-		Parsing parser = new Parsing(buff.file());
-		System.out.println(data.getData());
+		Parsing parser = new Parsing();
+		parser.parser(buff.file());
+	
 		
 		
-		
-		
-		
-		
+	
 		SpringApplication.run(JavaEsameApplication.class, args);
 	}
 

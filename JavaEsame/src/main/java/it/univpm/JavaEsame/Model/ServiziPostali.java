@@ -1,4 +1,4 @@
-package it.univpm.JavaEsame.Data;
+package it.univpm.JavaEsame.Model;
 
 public class ServiziPostali {
 	

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Data.ArrayMetadata;
 import it.univpm.JavaEsame.Data.Parsing;
-import it.univpm.JavaEsame.Data.ServiziPostali;
 import it.univpm.JavaEsame.Model.HelloWorldClass;
 import it.univpm.JavaEsame.Model.Metadata;
+import it.univpm.JavaEsame.Model.ServiziPostali;
 
 @RestController
 public class simpleRestController {
