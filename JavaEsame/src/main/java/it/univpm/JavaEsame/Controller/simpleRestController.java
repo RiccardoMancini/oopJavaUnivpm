@@ -31,4 +31,9 @@ public class simpleRestController {
 		return ArrayData.getData();
 
 	}
+	
+	/*@GetMapping("/operation")
+	public HelloWorldClass exampleMethod(@RequestParam(name="param1", defaultValue="Prova")  String param1) {
+		return new HelloWorldClass("Riccardo","Mancini");
+	}*/
 }
