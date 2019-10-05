@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import it.univpm.JavaEsame.Computing.Computing;
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Data.ArrayMetadata;
 import it.univpm.JavaEsame.Data.Parsing;
 import it.univpm.JavaEsame.Model.HelloWorldClass;
 import it.univpm.JavaEsame.Model.Metadata;
+import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
 
 @RestController
@@ -32,8 +35,11 @@ public class simpleRestController {
 
 	}
 	
-	/*@GetMapping("/operation")
-	public HelloWorldClass exampleMethod(@RequestParam(name="param1", defaultValue="Prova")  String param1) {
-		return new HelloWorldClass("Riccardo","Mancini");
-	}*/
+	@GetMapping("/operation")
+	public ArrayList<Operation> getOperation() {
+			
+		Computing op = new Computing("2017");
+		return op.arrayOperation();
+		}
+	
 }

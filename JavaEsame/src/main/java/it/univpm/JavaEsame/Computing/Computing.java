@@ -3,15 +3,16 @@ package it.univpm.JavaEsame.Computing;
 import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Data.ArrayData;
+import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
 
-public class Operation {
+public class Computing {
 	
 	private String Anno;
 	private int cella=0;
 	private float avg, max, min;
 	
-	public Operation (String Anno)
+	public Computing (String Anno)
 	{
 		this.Anno=Anno;
 		if (Anno.equals("2012"))cella = 0;
@@ -74,10 +75,11 @@ public class Operation {
 		return min;
 	}
 	
-	public void arrayOperation()
+	public ArrayList<Operation> arrayOperation()
 	{
-		float[] arrayOp =  { avg , max , min };
-		
-		System.out.println(arrayOp[0]+" "+arrayOp[1]+" "+arrayOp[2]);
+		ArrayList<Operation> arrayOp = new ArrayList<Operation>();
+		arrayOp.add(new Operation(Avg(), Max(), Min()));
+
+		return arrayOp;
 	}
 }
