@@ -19,9 +19,9 @@ public class JavaEsameApplication {
 		Buffer buff = new Buffer(url);
 		Parsing parser = new Parsing();
 		parser.parser(buff.file());
-		Computing media = new Computing("2017");
+		/*Computing media = new Computing("2017");
 		System.out.println("Media: " + media.Avg() + " massimo: "+ media.Max() + " minimo: "+ media.Min());
-		
+		*/
 	
 	
 		SpringApplication.run(JavaEsameApplication.class, args);

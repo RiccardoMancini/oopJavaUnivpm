@@ -9,8 +9,8 @@ import it.univpm.JavaEsame.Model.ServiziPostali;
 public class Computing {
 	
 	private String Anno;
-	private int cella=0;
-	private float avg, max, min;
+	private int cella;
+	private ArrayList<Operation> arrayOp;
 	
 	public Computing (String Anno)
 	{
@@ -27,7 +27,6 @@ public class Computing {
 	public float Avg ()
 	 {
 		 float Somma=0;
-		 this.avg = 0;
 		 int count=0;
 		
 		
@@ -39,45 +38,74 @@ public class Computing {
 					count ++;
 				}
 			}
-			avg = Somma/count;
-			return  avg;
+			
+			
+			return Somma/count;
+			
 	 }
 	
 	public float Max()
 	{
-		this.max=0;
-		
+		float m = 0;
 		for (int i=0; i < ArrayData.getData().size(); i++)
 		{
-			if (ArrayData.getData().get(i).getAnni()[cella] > max)
+			if (ArrayData.getData().get(i).getAnni()[cella] > m)
 			{
-				max=ArrayData.getData().get(i).getAnni()[cella];
+				m=ArrayData.getData().get(i).getAnni()[cella];
 			}
 		}
 
-		return max;
+		return m;
 	}
 	
 	public float Min()
 	{
-		this.min=0;
+		float m=0;
 		
 		for (int i=0; i < ArrayData.getData().size(); i++)
 		{
 			if (ArrayData.getData().get(i).getAnni()[cella] >= 0) 
 			{
-			   if (ArrayData.getData().get(i).getAnni()[cella] < min)
+			   if (ArrayData.getData().get(i).getAnni()[cella] < m)
 			   {
-				   min=ArrayData.getData().get(i).getAnni()[cella];
+				   m=ArrayData.getData().get(i).getAnni()[cella];
 			   }
 			}
 		}
-		return min;
+		return m;
+	}
+	
+	public float Dev_std()
+	{
+		float Somma = 0, count = 0, standardDeviation = 0;
+      
+        for(int i=0; i< ArrayData.getData().size(); i++) {
+        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        	{
+        		Somma += ArrayData.getData().get(i).getAnni()[cella];
+        		count ++;
+        	}
+        }
+        float mean = Somma/count;
+        for(int i=0; i < count; i++) {
+            standardDeviation += Math.pow(i - mean, 2);
+        }
+        return (float) Math.sqrt(standardDeviation/count);
+	}
+	
+	public float Sum()
+	{
+		return 0;
+	}
+	
+	public float Count()
+	{
+		return 0;
 	}
 	
 	public ArrayList<Operation> arrayOperation()
 	{
-		ArrayList<Operation> arrayOp = new ArrayList<Operation>();
+		arrayOp = new ArrayList<Operation>();
 		arrayOp.add(new Operation(Avg(), Max(), Min()));
 
 		return arrayOp;

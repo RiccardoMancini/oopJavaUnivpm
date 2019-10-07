@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,10 +36,10 @@ public class simpleRestController {
 
 	}
 	
-	@GetMapping("/operation")
-	public ArrayList<Operation> getOperation() {
+	@GetMapping("/operation/{anno}")
+	public ArrayList<Operation> getOperation(@PathVariable("anno") String anno) {
 			
-		Computing op = new Computing("2017");
+		Computing op = new Computing(anno);
 		return op.arrayOperation();
 		}
 	
