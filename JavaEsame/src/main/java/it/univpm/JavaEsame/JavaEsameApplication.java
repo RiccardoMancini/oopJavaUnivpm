@@ -5,8 +5,7 @@ import java.net.URL;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import it.univpm.JavaEsame.Computing.Computing;
-import it.univpm.JavaEsame.Data.ArrayData;
+import it.univpm.JavaEsame.Computing.Stringhe;
 import it.univpm.JavaEsame.Data.Buffer;
 import it.univpm.JavaEsame.Data.Parsing;
 
@@ -22,6 +21,7 @@ public class JavaEsameApplication {
 		/*Computing media = new Computing("2017");
 		System.out.println("Media: " + media.Avg() + " massimo: "+ media.Max() + " minimo: "+ media.Min());
 		*/
+		//Stringhe string = new Stringhe();
 	
 	
 		SpringApplication.run(JavaEsameApplication.class, args);

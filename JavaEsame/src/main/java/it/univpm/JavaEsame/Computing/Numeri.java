@@ -4,17 +4,16 @@ import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Model.Operation;
-import it.univpm.JavaEsame.Model.ServiziPostali;
 
-public class Computing {
+
+public class Numeri {
 	
-	private String Anno;
 	private int cella;
 	private ArrayList<Operation> arrayOp;
 	
-	public Computing (String Anno)
+	public Numeri (String Anno)
 	{
-		this.Anno=Anno;
+		
 		if (Anno.equals("2012"))cella = 0;
 		if (Anno.equals("2013"))cella = 1;
 		if (Anno.equals("2014"))cella = 2;
@@ -86,27 +85,49 @@ public class Computing {
         		count ++;
         	}
         }
-        float mean = Somma/count;
-        for(int i=0; i < count; i++) {
-            standardDeviation += Math.pow(i - mean, 2);
+        float media = Somma/count;
+        for(int i=0; i < ArrayData.getData().size(); i++) {
+        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        	{
+        		standardDeviation += Math.pow(ArrayData.getData().get(i).getAnni()[cella] - media, 2);
+        	}
         }
         return (float) Math.sqrt(standardDeviation/count);
 	}
 	
 	public float Sum()
 	{
-		return 0;
+		float Somma = 0;
+	      
+        for(int i=0; i< ArrayData.getData().size(); i++) {
+        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        	{
+        		Somma += ArrayData.getData().get(i).getAnni()[cella];
+        		
+        	}
+        }
+        
+		return Somma;
 	}
 	
-	public float Count()
+	public int Count()
 	{
-		return 0;
+		int count = 0;
+	      
+        for(int i=0; i< ArrayData.getData().size(); i++) {
+        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        	{
+        		
+        		count ++;
+        	}
+        }
+        return count;
 	}
 	
 	public ArrayList<Operation> arrayOperation()
 	{
 		arrayOp = new ArrayList<Operation>();
-		arrayOp.add(new Operation(Avg(), Max(), Min()));
+		arrayOp.add(new Operation(Avg(), Max(), Min(), Dev_std(), Sum(), Count()));
 
 		return arrayOp;
 	}
