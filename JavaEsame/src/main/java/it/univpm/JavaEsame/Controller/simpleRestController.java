@@ -1,6 +1,7 @@
 package it.univpm.JavaEsame.Controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -44,9 +45,9 @@ public class simpleRestController {
 		}
 	
 	@GetMapping("occorrence/{stringhe}")
-	public HashMap<String, Integer> getOccorrence(@PathVariable("stringhe") String attribute) {
+	public HashMap<String, Integer> getOccorrence(@PathVariable("stringhe") String attribute) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		;
-		return new Stringhe().stringOccorrence(attribute);
+		return new Stringhe(attribute).stringOccorrence();
 		}
 	
 }

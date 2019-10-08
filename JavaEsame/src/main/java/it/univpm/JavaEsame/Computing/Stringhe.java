@@ -1,5 +1,7 @@
 package it.univpm.JavaEsame.Computing;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import it.univpm.JavaEsame.Data.ArrayData;
 
@@ -7,81 +9,41 @@ public class Stringhe {
 	 // Creating a HashMap containing char 
     // as a key and occurrences as  a value 
     HashMap<String, Integer> stringCount;
-  
+    private String attribute;
+    Method metodo;
 
    
-    public  Stringhe()
+    public  Stringhe(String attribute) 
     {
     	stringCount = new HashMap<String, Integer>(); 	
-	    	
+	    this.attribute = attribute;
+	   
     }
     
-    public void FreqOccorrence()
+    
+    public void Occorrence() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+
     {
     	 for (int i=0; i<ArrayData.getData().size(); i++)
      	{ 
-         if (stringCount.containsKey( ArrayData.getData().get(i).getFreq() )) { 
+    		metodo = ArrayData.getData().get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
 
-             stringCount.put(ArrayData.getData().get(i).getFreq(), stringCount.get(ArrayData.getData().get(i).getFreq()) + 1); 
-         } 
+         if (stringCount.containsKey( metodo.invoke(ArrayData.getData().get(i)) )) { 
+
+             stringCount.put((String) metodo.invoke(ArrayData.getData().get(i)), stringCount.get((String) metodo.invoke(ArrayData.getData().get(i))) + 1); 
+        } 
          else { 
 
-              stringCount.put(ArrayData.getData().get(i).getFreq(), 1); 
+              stringCount.put((String) metodo.invoke(ArrayData.getData().get(i)), 1); 
          } 
         }
     }
     
-    public void UnitOccorrence()
-    {
-    	 for (int i=0; i<ArrayData.getData().size(); i++)
-	      	{ 
-	          if (stringCount.containsKey( ArrayData.getData().get(i).getUnit() )) { 
-
-	              stringCount.put(ArrayData.getData().get(i).getUnit(), stringCount.get(ArrayData.getData().get(i).getUnit()) + 1); 
-	          } 
-	          else { 
-
-	               stringCount.put(ArrayData.getData().get(i).getUnit(), 1); 
-	          } 
-	         }    	
-    }
-    
-    public void IndicpsOccorrence()
-    {
-    	 for (int i=0; i<ArrayData.getData().size(); i++)
-	      	{ 
-	          if (stringCount.containsKey( ArrayData.getData().get(i).getIndic_ps() )) { 
-
-	              stringCount.put(ArrayData.getData().get(i).getIndic_ps(), stringCount.get(ArrayData.getData().get(i).getIndic_ps()) + 1); 
-	          } 
-	          else { 
-
-	               stringCount.put(ArrayData.getData().get(i).getIndic_ps(), 1); 
-	          } 
-	         }    	
-    }
-    
-    public void GeoOccorrence()
-    {
-    	 for (int i=0; i<ArrayData.getData().size(); i++)
-	      	{ 
-	          if (stringCount.containsKey( ArrayData.getData().get(i).getGeo() )) { 
-
-	              stringCount.put(ArrayData.getData().get(i).getGeo(), stringCount.get(ArrayData.getData().get(i).getGeo()) + 1); 
-	          } 
-	          else { 
-
-	               stringCount.put(ArrayData.getData().get(i).getGeo(), 1); 
-	          } 
-	         }    	
-    }
   
-    public HashMap <String, Integer> stringOccorrence(String attribute)
+  
+    public HashMap <String, Integer> stringOccorrence() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
-    	if(attribute.equals("freq")) FreqOccorrence();
-    	if(attribute.equals("unit")) UnitOccorrence();
-    	if(attribute.equals("indicps")) IndicpsOccorrence();
-    	if(attribute.equals("geo")) GeoOccorrence();
+    	Occorrence();
         	
     	return stringCount;
     }
