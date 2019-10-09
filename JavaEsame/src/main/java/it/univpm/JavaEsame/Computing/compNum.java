@@ -6,12 +6,12 @@ import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Model.Operation;
 
 
-public class Numeri {
+public class compNum {
 	
 	private int cella;
 	private ArrayList<Operation> arrayOp;
 	
-	public Numeri (String Anno)
+	public compNum (String Anno)
 	{
 		
 		if (Anno.equals("2012"))cella = 0;
@@ -25,21 +25,8 @@ public class Numeri {
 	
 	public float Avg ()
 	 {
-		 float Somma=0;
-		 int count=0;
-		
-		
-			for  (int i=0; i < ArrayData.getData().size(); i++)
-			{
-				if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
-				{
-					Somma += ArrayData.getData().get(i).getAnni()[cella];
-					count ++;
-				}
-			}
 			
-			
-			return Somma/count;
+			return Sum()/Count();
 			
 	 }
 	
@@ -76,20 +63,14 @@ public class Numeri {
 	
 	public float Dev_std()
 	{
-		float Somma = 0, count = 0, standardDeviation = 0;
+		float count = 0, standardDeviation = 0;
       
-        for(int i=0; i< ArrayData.getData().size(); i++) {
-        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
-        	{
-        		Somma += ArrayData.getData().get(i).getAnni()[cella];
-        		count ++;
-        	}
-        }
-        float media = Somma/count;
+   
         for(int i=0; i < ArrayData.getData().size(); i++) {
         	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
         	{
-        		standardDeviation += Math.pow(ArrayData.getData().get(i).getAnni()[cella] - media, 2);
+        		standardDeviation += Math.pow(ArrayData.getData().get(i).getAnni()[cella] - Avg(), 2);
+        		count++;
         	}
         }
         return (float) Math.sqrt(standardDeviation/count);

@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import it.univpm.JavaEsame.Data.ArrayData;
 
-public class Stringhe {
+public class compString {
 	 // Creating a HashMap containing char 
     // as a key and occurrences as  a value 
     HashMap<String, Integer> stringCount;
@@ -13,13 +13,12 @@ public class Stringhe {
     Method metodo;
 
    
-    public  Stringhe(String attribute) 
+    public  compString(String attribute) 
     {
     	stringCount = new HashMap<String, Integer>(); 	
 	    this.attribute = attribute;
 	   
     }
-    
     
     public void Occorrence() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 
