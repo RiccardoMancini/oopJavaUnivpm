@@ -88,20 +88,8 @@ public class FilterUtils
 	
 	public void selectNum(String attribute, String operator, String value) {
 		
-		
-	}
-	
-
-	
-	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
-	 {
 		String[] value1 = value.split(",");
-		attrControl aC = new attrControl(attribute);
-		boolean c = aC.control();
-		cella = aC.cellSet();
 		
-		if(c)
-		{
 			if(value1.length==1)
 			{
 				value2 = new Double[1];
@@ -141,36 +129,61 @@ public class FilterUtils
 				  }
 				}
 			}
+		
+		
+		
+	}
+	
+	public void selectStr(String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	{
+		String[] value1 = value.split(",");
+		
+		if(!(out.isEmpty()))
+		{
+		 for(int i=0; i<out.size(); i++)
+		 {
+			metodo = out.get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
+			tmp = metodo.invoke(out.get(i));	
+				if(FilterUtils.check(tmp, operator, value1)) 
+				{
+					out2.add(out.get(i));
+				}
+			 }
+		   out.clear();
+		   out.addAll(out2);
+		   out2.clear();
+		}
+	else {
+		for(int i=0; i<ArrayData.getData().size(); i++) 
+		{
+			
+			metodo = ArrayData.getData().get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
+			tmp = metodo.invoke(ArrayData.getData().get(i));
+			
+				if(FilterUtils.check(tmp, operator, value1)) 
+				{
+					out.add(ArrayData.getData().get(i));
+				}
+		 }
+	   }
+		
+	}
+	
+	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
+	 {
+		String[] value1 = value.split(",");
+		attrControl aC = new attrControl(attribute);
+		boolean c = aC.control();
+		cella = aC.cellSet();
+		
+		if(c)
+		{
+			selectNum(attribute,operator,value);
 		}
 		else {
-			if(!(out.isEmpty()))
-			{
-			 for(int i=0; i<out.size(); i++)
-			 {
-				metodo = out.get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
-				tmp = metodo.invoke(out.get(i));	
-					if(FilterUtils.check(tmp, operator, value1)) 
-					{
-						out2.add(out.get(i));
-					}
-				 }
-			   out.clear();
-			   out.addAll(out2);
-			   out2.clear();
-			}
-		else {
-			for(int i=0; i<ArrayData.getData().size(); i++) 
-			{
-				
-				metodo = ArrayData.getData().get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
-				tmp = metodo.invoke(ArrayData.getData().get(i));
-				
-					if(FilterUtils.check(tmp, operator, value1)) 
-					{
-						out.add(ArrayData.getData().get(i));
-					}
-			 }
-		   }
+			
+			selectStr(attribute,operator,value);
+			
 		}
 		return out;
 	}
