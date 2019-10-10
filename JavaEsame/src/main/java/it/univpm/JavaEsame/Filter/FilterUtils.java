@@ -1,4 +1,4 @@
-package Filter;
+package it.univpm.JavaEsame.Filter;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
@@ -15,6 +15,7 @@ public class FilterUtils
 	private Object tmp;
 	private Method metodo;
 	private int cella;
+	private Object[] value2;
 	
 	public FilterUtils()
 	{
@@ -59,10 +60,10 @@ public class FilterUtils
 				switch (operator) {
 				 
 				case "in":
-					return value1.equals(value2);
+					return value1.equals(value2[0]);
 					
 				case "nin":
-					return !value1.equals(value2);
+					return !value1.equals(value2[0]);
 				}
 			}
 		
@@ -85,25 +86,33 @@ public class FilterUtils
 		return false;			
 	 }
 	
+	public void selectNum(String attribute, String operator, String value) {
+		
+		
+	}
+	
 
 	
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
 		String[] value1 = value.split(",");
-
-
-		if(attribute.equals("2012") || attribute.equals("2013") || attribute.equals("2014") ||
-			attribute.equals("2015") || attribute.equals("2016") || attribute.equals("2017"))
+		attrControl aC = new attrControl(attribute);
+		boolean c = aC.control();
+		cella = aC.cellSet();
+		
+		if(c)
 		{
-			Double[] value2 = new Double[2];
-			value2[0]=Double.parseDouble(value1[0]);
-			value2[1]=Double.parseDouble(value1[1]);
-			if (attribute.equals("2012"))cella = 0;
-			if (attribute.equals("2013"))cella = 1;
-			if (attribute.equals("2014"))cella = 2;
-			if (attribute.equals("2015"))cella = 3;
-			if (attribute.equals("2016"))cella = 4;
-			if (attribute.equals("2017"))cella = 5;
+			if(value1.length==1)
+			{
+				value2 = new Double[1];
+				value2[0]=Double.parseDouble(value1[0]);
+			}
+			else
+			{
+				value2 = new Double[2];
+				value2[0]=Double.parseDouble(value1[0]);
+				value2[1]=Double.parseDouble(value1[1]);
+			}
 			
 			if(!(out.isEmpty()))
 			{
@@ -116,7 +125,7 @@ public class FilterUtils
 						}
 				}
 				out.clear();
-				out.equals(out2);
+				out.addAll(out2);
 				out2.clear();
 			}
 			else {
@@ -139,14 +148,14 @@ public class FilterUtils
 			 for(int i=0; i<out.size(); i++)
 			 {
 				metodo = out.get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
-				Object tmp = metodo.invoke(out.get(i));	
+				tmp = metodo.invoke(out.get(i));	
 					if(FilterUtils.check(tmp, operator, value1)) 
 					{
 						out2.add(out.get(i));
 					}
 				 }
 			   out.clear();
-			   out.equals(out2);
+			   out.addAll(out2);
 			   out2.clear();
 			}
 		else {

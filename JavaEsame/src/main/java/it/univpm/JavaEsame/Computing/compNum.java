@@ -14,13 +14,22 @@ public class compNum {
 	public compNum (String Anno)
 	{
 		
-		if (Anno.equals("2012"))cella = 0;
-		if (Anno.equals("2013"))cella = 1;
-		if (Anno.equals("2014"))cella = 2;
-		if (Anno.equals("2015"))cella = 3;
-		if (Anno.equals("2016"))cella = 4;
-		if (Anno.equals("2017"))cella = 5;
-	}
+		try {
+			switch (Anno) {
+			case "2012": cella=0; break;
+			case "2013": cella=1; break;
+			case "2014": cella=2; break;
+			case "2015": cella=3; break;
+			case "2016": cella=4; break;
+			case "2017": cella=5; break;
+			}
+		}
+		catch(Exception e) { System.out.print("Anno non esistente!");}
+		 
+		
+		}
+		
+	
 	
 	
 	public float Avg()
