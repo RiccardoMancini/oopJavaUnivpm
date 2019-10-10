@@ -18,7 +18,6 @@ import it.univpm.JavaEsame.Computing.compString;
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Data.ArrayMetadata;
 import it.univpm.JavaEsame.Filter.FilterUtils;
-import it.univpm.JavaEsame.Model.HelloWorldClass;
 import it.univpm.JavaEsame.Model.Metadata;
 import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
@@ -54,8 +53,8 @@ public class simpleRestController {
 		}
 		else if (logicOp.equals("or"))
 		{
-			//...
-			return fu.getOut();
+			
+			return fu.select_OR(attribute1, operator1, value1, attribute2, operator2, value2);
 		}
 		else return null;
 		

@@ -1,10 +1,10 @@
-package it.univpm.JavaEsame.Filter;
+package it.univpm.JavaEsame.Model;
 
-public class attrControl {
+public class annoControl {
 	
 	private String attribute;
 	
-	public attrControl(String attribute)
+	public annoControl(String attribute)
 	{
 		this.attribute = attribute;
 	
@@ -26,7 +26,7 @@ public class attrControl {
 	
 	public int cellSet()
 	{
-		try {
+	
 		switch (attribute) {
 		case "2012": return 0;
 		case "2013": return 1;
@@ -36,9 +36,8 @@ public class attrControl {
 		case "2017": return 5;
 		default: return 6 ;
 		}
-		}
-		catch(Exception e) {System.out.println("Anno non esistente!");
-							return 0;}
+		
+		
 		
 		
 		

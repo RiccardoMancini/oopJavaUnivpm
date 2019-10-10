@@ -7,15 +7,16 @@ import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Model.ServiziPostali;
+import it.univpm.JavaEsame.Model.annoControl;
 
 
 public class FilterUtils 
 {
 	private static ArrayList<ServiziPostali> out,out2;
-	private Object tmp;
-	private Method metodo;
-	private int cella;
-	private Object[] value2;
+	private Object tmp,tmp1,tmp2;
+	private Method metodo,metodo1,metodo2;
+	private int cella,cella1,cella2;
+	private Object[] value2, valueS1_1, valueS2_2;
 	
 	public FilterUtils()
 	{
@@ -169,10 +170,74 @@ public class FilterUtils
 		
 	}
 	
+	public void selectNum_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) {
+		
+		String[] valueS1 = value1.split(",");
+		String[] valueS2 = value2.split(",");
+		
+			if(valueS1.length==1)
+			{
+				valueS1_1 = new Double[1];
+				valueS1_1[0]=Double.parseDouble(valueS1[0]);
+			}
+			else
+			{
+				valueS1_1 = new Double[2];
+				valueS1_1[0]=Double.parseDouble(valueS1[0]);
+				valueS1_1[1]=Double.parseDouble(valueS1[1]);
+			}
+			if(valueS2.length==1)
+			{
+				valueS2_2 = new Double[1];
+				valueS2_2[0]=Double.parseDouble(valueS2[0]);
+			}
+			else
+			{
+				valueS2_2 = new Double[2];
+				valueS2_2[0]=Double.parseDouble(valueS2[0]);
+				valueS2_2[1]=Double.parseDouble(valueS2[1]);
+			}
+			
+			for(int i=0; i<ArrayData.getData().size(); i++) 
+			{
+			 
+			if(ArrayData.getData().get(i).getAnni()[cella1] >= 0 && ArrayData.getData().get(i).getAnni()[cella2] >= 0)
+			  {
+				if((FilterUtils.check(ArrayData.getData().get(i).getAnni()[cella1], operator1, valueS1_1) && ArrayData.getData().get(i).getAnni()[cella1] != -1)
+				    || FilterUtils.check(ArrayData.getData().get(i).getAnni()[cella2], operator2, valueS2_2) && ArrayData.getData().get(i).getAnni()[cella2]!= -1) 
+				{
+					
+					out.add(ArrayData.getData().get(i));
+				}			
+			  }
+			}	
+	}
+	
+	public void selectStr_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	{
+		String[] valueS1 = value1.split(",");
+		String[] valueS2 = value2.split(",");
+		
+		
+		for(int i=0; i<ArrayData.getData().size(); i++) 
+		{
+			metodo1 = ArrayData.getData().get(i).getClass().getMethod("get" + attribute1.substring(0, 1).toUpperCase()+attribute1.substring(1), null);
+			tmp1 = metodo1.invoke(ArrayData.getData().get(i));
+			metodo2 = ArrayData.getData().get(i).getClass().getMethod("get" + attribute2.substring(0, 1).toUpperCase()+attribute2.substring(1), null);
+			tmp2 = metodo2.invoke(ArrayData.getData().get(i));
+						
+				if(FilterUtils.check(tmp1, operator1, valueS1) || FilterUtils.check(tmp2, operator2, valueS2)) 
+				{
+					out.add(ArrayData.getData().get(i));
+				}
+		 }
+	   
+	}
+	
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
-		String[] value1 = value.split(",");
-		attrControl aC = new attrControl(attribute);
+		//String[] value1 = value.split(",");
+		annoControl aC = new annoControl(attribute);
 		boolean c = aC.control();
 		cella = aC.cellSet();
 		
@@ -187,7 +252,29 @@ public class FilterUtils
 		}
 		return out;
 	}
-	
+
+	public ArrayList<ServiziPostali> select_OR( String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
+	{
+		annoControl aC1 = new annoControl(attribute1);
+		boolean c1 = aC1.control();
+		cella1 = aC1.cellSet();
+		annoControl aC2 = new annoControl(attribute2);
+		boolean c2 = aC2.control();
+		cella2 = aC2.cellSet();
+		
+		if(c1 && c2)
+		{
+			selectNum_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
+		}
+		else if(!c1 && !c2)
+		{
+			selectStr_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
+		}
+		
+		return out;
+		
+	}
+
 	
 	
 	public static ArrayList<ServiziPostali> getOut() {
