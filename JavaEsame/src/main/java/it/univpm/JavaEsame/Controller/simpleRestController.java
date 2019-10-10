@@ -25,7 +25,7 @@ import it.univpm.JavaEsame.Model.ServiziPostali;
 @RestController
 public class simpleRestController {
 	
-	@GetMapping("/metadata")
+	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
 	public ArrayList<Metadata> getMetadata() {
 		return new ArrayMetadata().getArrayMetadata();
 	}
@@ -53,25 +53,30 @@ public class simpleRestController {
 		}
 		else if (logicOp.equals("or"))
 		{
-			
 			return fu.select_OR(attribute1, operator1, value1, attribute2, operator2, value2);
 		}
 		else return null;
 		
 	}
 	
-	
-	@GetMapping("/operation")
+	@RequestMapping(value = "/operation", method = RequestMethod.GET)
 	public ArrayList<Operation> getOperation(@RequestParam String anno) {
 			
-		compNum op = new compNum(anno);
+		compNum op = new compNum(anno, ArrayData.getData());
 		return op.arrayOperation();
 		}
 	
-	@GetMapping("/occorrence")
+	@RequestMapping(value = "/operation", method = RequestMethod.GET, params = {"anno", "attribute", "operator", "value"})
+	public ArrayList<Operation> getOperation(@RequestParam String anno, String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			
+		compNum op = new compNum(anno, new FilterUtils().select(attribute, operator, value));
+		return op.arrayOperation();
+		}
+	
+	@RequestMapping(value = "/occorrence", method = RequestMethod.GET)
 	public HashMap<String, Integer> getOccorrence(@RequestParam String attribute) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		;
-		return new compString(attribute).stringOccorrence();
+		
+			return new compString(attribute).stringOccorrence();
 		}
 	
 }

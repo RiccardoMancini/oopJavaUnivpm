@@ -4,49 +4,40 @@ import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Model.Operation;
+import it.univpm.JavaEsame.Model.ServiziPostali;
+import it.univpm.JavaEsame.Model.annoControl;
 
 
 public class compNum {
 	
 	private int cella;
 	private ArrayList<Operation> arrayOp;
+	private ArrayList<ServiziPostali> arrSP;
+	private annoControl aC;
 	
-	public compNum (String Anno)
+	public compNum (String Anno, ArrayList<ServiziPostali> arrSP)
 	{
 		
-		try {
-			switch (Anno) {
-			case "2012": cella=0; break;
-			case "2013": cella=1; break;
-			case "2014": cella=2; break;
-			case "2015": cella=3; break;
-			case "2016": cella=4; break;
-			case "2017": cella=5; break;
-			}
-		}
-		catch(Exception e) { System.out.print("Anno non esistente!");}
-		 
+		aC = new annoControl(Anno);
+		cella = aC.cellSet();
+	    this.arrSP = new ArrayList<ServiziPostali>(arrSP);
+	}
 		
-		}
-		
-	
-	
-	
-	public float Avg()
+	 public float Avg()
 	 {
 			
-			return Sum()/Count();
+		return Sum()/Count();
 			
 	 }
 	
 	public float Max()
 	{
 		float m = 0;
-		for (int i=0; i < ArrayData.getData().size(); i++)
+		for (int i=0; i < arrSP.size(); i++)
 		{
-			if (ArrayData.getData().get(i).getAnni()[cella] > m)
+			if (arrSP.get(i).getAnni()[cella] > m)
 			{
-				m=ArrayData.getData().get(i).getAnni()[cella];
+				m=arrSP.get(i).getAnni()[cella];
 			}
 		}
 
@@ -57,13 +48,13 @@ public class compNum {
 	{
 		float m=0;
 		
-		for (int i=0; i < ArrayData.getData().size(); i++)
+		for (int i=0; i < arrSP.size(); i++)
 		{
-			if (ArrayData.getData().get(i).getAnni()[cella] >= 0) 
+			if (arrSP.get(i).getAnni()[cella] >= 0) 
 			{
-			   if (ArrayData.getData().get(i).getAnni()[cella] < m)
+			   if (arrSP.get(i).getAnni()[cella] < m)
 			   {
-				   m=ArrayData.getData().get(i).getAnni()[cella];
+				   m=arrSP.get(i).getAnni()[cella];
 			   }
 			}
 		}
@@ -75,10 +66,10 @@ public class compNum {
 		float count = 0, standardDeviation = 0;
       
    
-        for(int i=0; i < ArrayData.getData().size(); i++) {
-        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        for(int i=0; i < arrSP.size(); i++) {
+        	if (arrSP.get(i).getAnni()[cella] >= 0)
         	{
-        		standardDeviation += Math.pow(ArrayData.getData().get(i).getAnni()[cella] - Avg(), 2);
+        		standardDeviation += Math.pow(arrSP.get(i).getAnni()[cella] - Avg(), 2);
         		count++;
         	}
         }
@@ -89,10 +80,10 @@ public class compNum {
 	{
 		float Somma = 0;
 	      
-        for(int i=0; i< ArrayData.getData().size(); i++) {
-        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        for(int i=0; i< arrSP.size(); i++) {
+        	if (arrSP.get(i).getAnni()[cella] >= 0)
         	{
-        		Somma += ArrayData.getData().get(i).getAnni()[cella];
+        		Somma += arrSP.get(i).getAnni()[cella];
         		
         	}
         }
@@ -104,8 +95,8 @@ public class compNum {
 	{
 		int count = 0;
 	      
-        for(int i=0; i< ArrayData.getData().size(); i++) {
-        	if (ArrayData.getData().get(i).getAnni()[cella] >= 0)
+        for(int i=0; i< arrSP.size(); i++) {
+        	if (arrSP.get(i).getAnni()[cella] >= 0)
         	{
         		
         		count ++;

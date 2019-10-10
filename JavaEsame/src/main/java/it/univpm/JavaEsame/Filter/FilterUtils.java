@@ -1,10 +1,8 @@
 package it.univpm.JavaEsame.Filter;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-
 import it.univpm.JavaEsame.Data.ArrayData;
 import it.univpm.JavaEsame.Model.ServiziPostali;
 import it.univpm.JavaEsame.Model.annoControl;
@@ -79,7 +77,7 @@ public class FilterUtils
 				
 				if (operator.equals("bt"))
 				{
-					return ((value1C > value2C) && (value1C < value3C));
+					return ((value1C >= value2C) && (value1C <= value3C));
 				}
 			}
 			
