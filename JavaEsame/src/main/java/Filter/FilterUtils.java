@@ -22,49 +22,66 @@ public class FilterUtils
 		out2 = new ArrayList<ServiziPostali>();
 	}
 	
-	public static boolean check(Object value1, String operator, Object value2)
+	public static boolean check(Object value1, String operator, Object[] value2)
 	{
+		if (value2.length==1)	
+		{
+			if (value1 instanceof Number && value2[0] instanceof Number) 
+			{	
+				Double value1C = ((Number)value1).doubleValue();
+				Double value2C = ((Number)value2[0]).doubleValue();
+				
+				switch (operator) {
+				 
+				case "in":
+					return value1C.equals(value2C);
+					
+				case "nin":
+					return !value1C.equals(value2C);	
+				
+				case "gt":// >
+					return value1C > value2C;
+					
+				case "gte":// >=
+					return value1C >= value2C;
+					
+				case "lt":// <
+					return value1C < value2C;
+					
+				case "lte":// <=
+					return value1C <= value2C;
+				}
+				
+			}
 			
-		if (value1 instanceof Number && value2 instanceof Number) 
-		{	
-			Double value1C = ((Number)value1).doubleValue();
-			Double value2C = ((Number)value2).doubleValue();
-			
-			switch (operator) {
-			 
-			case "in":
-				return value1C.equals(value2C);
-				
-			case "nin":
-				return !value1C.equals(value2C);	
-			
-			case "gt":// >
-				return value1C > value2C;
-				
-			case "gte":// >=
-				return value1C >= value2C;
-				
-			case "lt":// <
-				return value1C < value2C;
-				
-			case "lte":// <=
-				return value1C <= value2C;
+			else if(value2[0] instanceof String && value1 instanceof String)
+			{
+				switch (operator) {
+				 
+				case "in":
+					return value1.equals(value2);
+					
+				case "nin":
+					return !value1.equals(value2);
+				}
 			}
 		
-			
 		}
-		else if(value2 instanceof String && value1 instanceof String)
+		else if(value2.length==2)
 		{
-			switch (operator) {
-			 
-			case "in":
-				return value1.equals(value2);
+			if (value1 instanceof Number && value2[0] instanceof Number && value2[1] instanceof Number) 
+			{	
+				Double value1C = ((Number)value1).doubleValue();
+				Double value2C = ((Number)value2[0]).doubleValue();
+				Double value3C = ((Number)value2[1]).doubleValue();
 				
-			case "nin":
-				return !value1.equals(value2);
+				if (operator.equals("bt"))
+				{
+					return ((value1C > value2C) && (value1C < value3C));
+				}
 			}
-		}
 			
+		}
 		return false;			
 	 }
 	
@@ -72,11 +89,15 @@ public class FilterUtils
 	
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
+		String[] value1 = value.split(",");
 
 
 		if(attribute.equals("2012") || attribute.equals("2013") || attribute.equals("2014") ||
 			attribute.equals("2015") || attribute.equals("2016") || attribute.equals("2017"))
 		{
+			Double[] value2 = new Double[2];
+			value2[0]=Double.parseDouble(value1[0]);
+			value2[1]=Double.parseDouble(value1[1]);
 			if (attribute.equals("2012"))cella = 0;
 			if (attribute.equals("2013"))cella = 1;
 			if (attribute.equals("2014"))cella = 2;
@@ -88,7 +109,7 @@ public class FilterUtils
 			{
 				for(int i=0; i<out.size(); i++)
 				{
-						if(FilterUtils.check(out.get(i).getAnni()[cella], operator, Float.parseFloat(value))) 
+						if(FilterUtils.check(out.get(i).getAnni()[cella], operator, value2)) 
 						{
 							out2.add(out.get(i));
 							
@@ -103,7 +124,7 @@ public class FilterUtils
 				{
 				  if(ArrayData.getData().get(i).getAnni()[cella] >= 0)
 				  {
-					if(FilterUtils.check(ArrayData.getData().get(i).getAnni()[cella], operator, Float.parseFloat(value))) 
+					if(FilterUtils.check(ArrayData.getData().get(i).getAnni()[cella], operator, value2)) 
 					{
 						
 						out.add(ArrayData.getData().get(i));
@@ -119,7 +140,7 @@ public class FilterUtils
 			 {
 				metodo = out.get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
 				Object tmp = metodo.invoke(out.get(i));	
-					if(FilterUtils.check(tmp, operator, value)) 
+					if(FilterUtils.check(tmp, operator, value1)) 
 					{
 						out2.add(out.get(i));
 					}
@@ -135,7 +156,7 @@ public class FilterUtils
 				metodo = ArrayData.getData().get(i).getClass().getMethod("get" + attribute.substring(0, 1).toUpperCase()+attribute.substring(1), null);
 				tmp = metodo.invoke(ArrayData.getData().get(i));
 				
-					if(FilterUtils.check(tmp, operator, value)) 
+					if(FilterUtils.check(tmp, operator, value1)) 
 					{
 						out.add(ArrayData.getData().get(i));
 					}

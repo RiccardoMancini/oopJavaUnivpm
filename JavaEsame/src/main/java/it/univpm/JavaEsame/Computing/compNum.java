@@ -23,7 +23,7 @@ public class compNum {
 	}
 	
 	
-	public float Avg ()
+	public float Avg()
 	 {
 			
 			return Sum()/Count();
@@ -108,7 +108,7 @@ public class compNum {
 	public ArrayList<Operation> arrayOperation()
 	{
 		arrayOp = new ArrayList<Operation>();
-		arrayOp.add(new Operation(Avg(), Max(), Min(), Dev_std(), Sum(), Count()));
+        arrayOp.add(new Operation(Avg(), Max(), Min(), Dev_std(), Sum(), Count()));
 
 		return arrayOp;
 	}
