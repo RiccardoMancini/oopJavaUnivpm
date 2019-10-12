@@ -40,7 +40,7 @@ Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta  [http://loca
 Per eseguire le richieste GET  utiliziamo un Api-testing come Postman.
 sarà possibile effettuare le seguenti richieste:
 | Tipo | Indirizzo | Descrizione|
-|:---:|:---:|:---:|:---:|
+|---|---|---|---|
 | Get | /metadata | Restituisce i metadati (formato JSON)|
 | Get | /data| Restituisce il dataset (formato JSON)|
 | Get | /operation?anno="anno"| Restituisce statistiche sui dati dell'"anno" richiesto (avg,min,max,dev std,sum,count)|
