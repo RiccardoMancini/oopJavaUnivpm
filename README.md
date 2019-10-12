@@ -39,6 +39,7 @@ Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta  [http://loca
 
 Per eseguire le richieste GET  utiliziamo un Api-testing come Postman.
 sarà possibile effettuare le seguenti richieste:
+
 | Tipo | Indirizzo | Descrizione|
 |---|---|---|
 | Get | /metadata | Restituisce i metadati (formato JSON)|
@@ -50,14 +51,15 @@ sarà possibile effettuare le seguenti richieste:
 Inoltre è possibile applicare dei filtri nel seguente modo:
 
 | Tipo | Indirizzo | Descrizione|
-|--|--|--|--|
+|--|--|--|
 |Get|/data?attribute="attributo" &operator="operatore"&value="valore"|Restituisce il dataset filtrato|
 |Get|/operation?anno="anno"&attribute="attributo" &operator="operatore"&value="valore"| Restituisce statistiche filtrate sui dati dell'"anno" richiesto|
 |Get|/data?attribute1="attr1" &operator1="op1"&value1="val1" &logicOp="op.logico" &operator2="op2"&value2="val2"|Restituisce il dataset combinando più filtri con op.logico (and, or)|
 
 Si potranno utilizzare i seguenti operatori:
-|Nome Operatore| Descrizione 
-|--|--|--|
+
+|Nome Operatore| Descrizione|
+|--|--|
 |gt| ">" maggiore  (numeri)|
 |gte|  ">=" maggiore uguale (numeri)|
 |lt|  "<" minore  (numeri)|
@@ -67,6 +69,7 @@ Si potranno utilizzare i seguenti operatori:
 |nin| trova il valore NON richiesto (stringhe/numeri)|
 
 operatori logici per combinare più filtri
+
 |Operatore Logico|Descrizione  |
 |--|--|
 |and| entrambe le condizioni sono vere |
