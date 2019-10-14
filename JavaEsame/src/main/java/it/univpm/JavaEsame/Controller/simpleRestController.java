@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import it.univpm.JavaEsame.Computing.CompNum;
 import it.univpm.JavaEsame.Computing.CompString;
 import it.univpm.JavaEsame.Filter.FilterUtils;
@@ -67,7 +64,7 @@ public class simpleRestController {
 		}
 	
 	@RequestMapping(value = "/operation", method = RequestMethod.GET, params = {"anno", "attribute", "operator", "value"})
-	public ArrayList<Operation> getOperation(@RequestParam String anno, String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public ArrayList<Operation> getOperation(@RequestParam String anno, String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 			
 		CompNum op = new CompNum(anno, new FilterUtils().select(attribute, operator, value));
 		return op.arrayOperation();
@@ -78,5 +75,21 @@ public class simpleRestController {
 		
 			return new CompString(attribute).Occorrence();
 		}
+
+	/**
+	 * 
+	 * Gestione eccezioni per quanto riguarda l'errata scrittura su Postman
+	 * 
+	 */
+	
+	@ExceptionHandler(NoSuchMethodException.class)
+    public String handleMyException(Exception  exception) {
+     return "Not so Good";
+            }  
+	
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+    public String handleMyException2(Exception  exception) {
+     return "Not so Good";
+            }  
 	
 }

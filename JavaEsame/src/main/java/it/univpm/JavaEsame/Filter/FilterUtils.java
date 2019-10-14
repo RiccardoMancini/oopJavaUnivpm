@@ -303,13 +303,13 @@ public class FilterUtils
 	
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
-		//String[] value1 = value.split(",");
+	
 		AnnoControl aC = new AnnoControl(attribute);
 		boolean c = aC.control();
-		cella = aC.cellSet();
 		
 		if(c)
 		{
+			cella = aC.cellSet();
 			selectNum(attribute,operator,value);
 		}
 		else {
@@ -324,13 +324,14 @@ public class FilterUtils
 	{
 		AnnoControl aC1 = new AnnoControl(attribute1);
 		boolean c1 = aC1.control();
-		cella1 = aC1.cellSet();
 		AnnoControl aC2 = new AnnoControl(attribute2);
 		boolean c2 = aC2.control();
-		cella2 = aC2.cellSet();
+		
 		
 		if(c1 && c2)
 		{
+			cella1 = aC1.cellSet();
+			cella2 = aC2.cellSet();
 			selectNum_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
 		}
 		else if(!c1 && !c2)
@@ -339,10 +340,12 @@ public class FilterUtils
 		}
 		else if(!c1 && c2)
 		{
+			cella2 = aC2.cellSet();
 			selectStrNum_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
 		}
 		else if(c1 && !c2)
 		{
+			cella1 = aC1.cellSet();
 			selectNumStr_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
 		}
 		return out;
