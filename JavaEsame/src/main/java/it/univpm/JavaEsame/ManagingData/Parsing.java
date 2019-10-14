@@ -1,4 +1,4 @@
-package it.univpm.JavaEsame.Data;
+package it.univpm.JavaEsame.ManagingData;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class Parsing {
 			
 			
 			spost.add(new ServiziPostali(row[0],row[1],row[2],row[3], 
-					  				new float[] {new StringControl(row[4]).control(),
+					  				new double[] {new StringControl(row[4]).control(),
 					  							 new StringControl(row[5]).control(),
 					  							 new StringControl(row[6]).control(),
 					  							 new StringControl(row[7]).control(),

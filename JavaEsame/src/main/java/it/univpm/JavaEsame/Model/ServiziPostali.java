@@ -6,9 +6,9 @@ public class ServiziPostali {
 	private String Unit;
 	private String Indicps;
 	private String Geo;
-	private float[] Anni;
+	private double[] Anni;
 	
-	public ServiziPostali(String Freq, String Unit, String Indicps, String Geo, float[] Anni)
+	public ServiziPostali(String Freq, String Unit, String Indicps, String Geo, double[] Anni)
 	{
 		this.Freq = Freq;
 		this.Unit = Unit;
@@ -38,7 +38,7 @@ public class ServiziPostali {
 	}
 
 	
-	public float[] getAnni() {
+	public double[] getAnni() {
 		return Anni;
 	}
 

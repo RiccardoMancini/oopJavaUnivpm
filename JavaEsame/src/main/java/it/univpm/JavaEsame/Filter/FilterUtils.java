@@ -3,9 +3,10 @@ package it.univpm.JavaEsame.Filter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import it.univpm.JavaEsame.Data.ArrayData;
+
 import it.univpm.JavaEsame.Model.ServiziPostali;
-import it.univpm.JavaEsame.Model.annoControl;
+import it.univpm.JavaEsame.ManagingData.AnnoControl;
+import it.univpm.JavaEsame.ManagingData.ArrayData;
 
 
 public class FilterUtils 
@@ -303,7 +304,7 @@ public class FilterUtils
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
 		//String[] value1 = value.split(",");
-		annoControl aC = new annoControl(attribute);
+		AnnoControl aC = new AnnoControl(attribute);
 		boolean c = aC.control();
 		cella = aC.cellSet();
 		
@@ -321,10 +322,10 @@ public class FilterUtils
 
 	public ArrayList<ServiziPostali> select_OR( String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	{
-		annoControl aC1 = new annoControl(attribute1);
+		AnnoControl aC1 = new AnnoControl(attribute1);
 		boolean c1 = aC1.control();
 		cella1 = aC1.cellSet();
-		annoControl aC2 = new annoControl(attribute2);
+		AnnoControl aC2 = new AnnoControl(attribute2);
 		boolean c2 = aC2.control();
 		cella2 = aC2.cellSet();
 		

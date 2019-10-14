@@ -1,38 +1,36 @@
 package it.univpm.JavaEsame.Computing;
 
 import java.util.ArrayList;
-
-import it.univpm.JavaEsame.Data.ArrayData;
+import it.univpm.JavaEsame.ManagingData.AnnoControl;
 import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
-import it.univpm.JavaEsame.Model.annoControl;
 
 
-public class compNum {
+public class CompNum {                             //Classe  utilizzata per effettuare la computazione sull'attributo "anno" 
 	
 	private int cella;
 	private ArrayList<Operation> arrayOp;
 	private ArrayList<ServiziPostali> arrSP;
-	private annoControl aC;
+	private AnnoControl aC;
 	
-	public compNum (String Anno, ArrayList<ServiziPostali> arrSP)
+	public CompNum (String Anno, ArrayList<ServiziPostali> arrSP)   //Costruttore a cui viene passato l'anno scelto per effettuare la computazione, e l'ArrayList contenente i dati con cui vogliamo lavorare
 	{
 		
-		aC = new annoControl(Anno);
+		aC = new AnnoControl(Anno);
 		cella = aC.cellSet();
 	    this.arrSP = new ArrayList<ServiziPostali>(arrSP);
 	}
-		
-	 public float Avg()
+	
+	 public double Avg()                            //Metodo utilizzato per il calcolo della media
 	 {
 			
 		return Sum()/Count();
 			
 	 }
 	
-	public float Max()
+	public double Max()                            //Metodo utilizzato per il calcolo del massimo
 	{
-		float m = 0;
+		double m = 0;
 		for (int i=0; i < arrSP.size(); i++)
 		{
 			if (arrSP.get(i).getAnni()[cella] > m)
@@ -44,9 +42,9 @@ public class compNum {
 		return m;
 	}
 	
-	public float Min()
+	public double Min()                           //Metodo utilizzato per il calcolo del minimo
 	{
-		float m=0;
+		double m=0;
 		
 		for (int i=0; i < arrSP.size(); i++)
 		{
@@ -61,9 +59,9 @@ public class compNum {
 		return m;
 	}
 	
-	public float Dev_std()
+	public double Dev_std()                      //Metodo utilizzato per il calcolo della deviazione standard
 	{
-		float count = 0, standardDeviation = 0;
+		double count = 0, standardDeviation = 0;
       
    
         for(int i=0; i < arrSP.size(); i++) {
@@ -73,12 +71,12 @@ public class compNum {
         		count++;
         	}
         }
-        return (float) Math.sqrt(standardDeviation/count);
+        return (double) Math.sqrt(standardDeviation/count);
 	}
 	
-	public float Sum()
+	public double Sum()                         //Metodo utilizzato per il calcolo della somma 
 	{
-		float Somma = 0;
+		double Somma = 0;
 	      
         for(int i=0; i< arrSP.size(); i++) {
         	if (arrSP.get(i).getAnni()[cella] >= 0)
@@ -91,21 +89,20 @@ public class compNum {
 		return Somma;
 	}
 	
-	public int Count()
+	public int Count()                           //Metodo utilizzato per il conteggio di elementi
 	{
 		int count = 0;
 	      
         for(int i=0; i< arrSP.size(); i++) {
         	if (arrSP.get(i).getAnni()[cella] >= 0)
-        	{
-        		
+        	{		
         		count ++;
         	}
         }
         return count;
 	}
 	
-	public ArrayList<Operation> arrayOperation()
+	public ArrayList<Operation> arrayOperation()  //Metodo che restituisce un Arraylist di tipo Operation
 	{
 		arrayOp = new ArrayList<Operation>();
         arrayOp.add(new Operation(Avg(), Max(), Min(), Dev_std(), Sum(), Count()));

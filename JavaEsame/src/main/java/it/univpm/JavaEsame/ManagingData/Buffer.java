@@ -1,4 +1,4 @@
-package it.univpm.JavaEsame.Data;
+package it.univpm.JavaEsame.ManagingData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,15 +8,14 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Buffer {
+public class Buffer {						//Classe che decodifica il JSON e scarica il dataset CSV
 
 	private BufferedReader br;
 	private String lstr;
 	private String filename;
 	
 	
-	
-	public Buffer(URL url) throws IOException {
+	public Buffer(URL url) throws IOException {		//Metodo che mette in una stringa tutto il JSON da elaborare	
 		
 		this.lstr = "";
 		String str = "";

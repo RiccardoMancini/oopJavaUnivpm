@@ -2,14 +2,14 @@ package it.univpm.JavaEsame.Model;
 
 public class Operation {
 
-	private float avg;
-	private float max;
-	private float min;
-	private float dev_std;
-	private float sum;
+	private double avg;
+	private double max;
+	private double min;
+	private double dev_std;
+	private double sum;
 	private int count;
 	
-	public Operation(float avg, float max, float min, float dev_std, float sum, int count)
+	public Operation(double avg, double max, double min, double dev_std, double sum, int count)
 	{
 		this.avg = avg;
 		this.max = max;
@@ -19,19 +19,19 @@ public class Operation {
 		this.count = count;
 	}
 
-	public float getDev_std() {
+	public double getDev_std() {
 		return dev_std;
 	}
 
-	public void setDev_std(float dev_std) {
+	public void setDev_std(double dev_std) {
 		this.dev_std = dev_std;
 	}
 
-	public float getSum() {
+	public double getSum() {
 		return sum;
 	}
 
-	public void setSum(float sum) {
+	public void setSum(double sum) {
 		this.sum = sum;
 	}
 
@@ -43,27 +43,27 @@ public class Operation {
 		this.count = count;
 	}
 
-	public float getAvg() {
+	public double getAvg() {
 		return avg;
 	}
 
-	public void setAvg(float avg) {
+	public void setAvg(double avg) {
 		this.avg = avg;
 	}
 
-	public float getMax() {
+	public double getMax() {
 		return max;
 	}
 
-	public void setMax(float max) {
+	public void setMax(double max) {
 		this.max = max;
 	}
 
-	public float getMin() {
+	public double getMin() {
 		return min;
 	}
 
-	public void setMin(float min) {
+	public void setMin(double min) {
 		this.min = min;
 	}
 

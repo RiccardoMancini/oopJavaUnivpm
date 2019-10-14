@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.univpm.JavaEsame.Computing.compNum;
-import it.univpm.JavaEsame.Computing.compString;
-import it.univpm.JavaEsame.Data.ArrayData;
-import it.univpm.JavaEsame.Data.ArrayMetadata;
+import it.univpm.JavaEsame.Computing.CompNum;
+import it.univpm.JavaEsame.Computing.CompString;
 import it.univpm.JavaEsame.Filter.FilterUtils;
+import it.univpm.JavaEsame.ManagingData.ArrayData;
+import it.univpm.JavaEsame.ManagingData.ArrayMetadata;
 import it.univpm.JavaEsame.Model.Metadata;
 import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
@@ -62,21 +62,21 @@ public class simpleRestController {
 	@RequestMapping(value = "/operation", method = RequestMethod.GET)
 	public ArrayList<Operation> getOperation(@RequestParam String anno) {
 			
-		compNum op = new compNum(anno, ArrayData.getData());
+		CompNum op = new CompNum(anno, ArrayData.getData());
 		return op.arrayOperation();
 		}
 	
 	@RequestMapping(value = "/operation", method = RequestMethod.GET, params = {"anno", "attribute", "operator", "value"})
 	public ArrayList<Operation> getOperation(@RequestParam String anno, String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 			
-		compNum op = new compNum(anno, new FilterUtils().select(attribute, operator, value));
+		CompNum op = new CompNum(anno, new FilterUtils().select(attribute, operator, value));
 		return op.arrayOperation();
 		}
 	
 	@RequestMapping(value = "/occorrence", method = RequestMethod.GET)
 	public HashMap<String, Integer> getOccorrence(@RequestParam String attribute) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
-			return new compString(attribute).stringOccorrence();
+			return new CompString(attribute).Occorrence();
 		}
 	
 }
