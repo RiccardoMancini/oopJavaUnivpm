@@ -1,15 +1,15 @@
 # Progetto OOP in Java
 
-Il progetto che andremo a descrivere è un'applicazione sviluppata in Java, che grazie allo SpringBoot-Framework, rende possibile la creazione di un Web Service.
-Un Web Service è un sistema software che riceve richieste da un client tramite il protocollo HTTP, fornendo le relative riposte.
-Nel nostro caso il client effettua delle rischieste GET specifiche, su dati contenuti in un Data-set in formato csv.
+Il progetto che andremo a descrivere è un'applicazione sviluppata in Java, che grazie allo SpringBoot-Framework, rende possibile la creazione di un Web Service.  
+Un Web Service è un sistema software che riceve richieste da un client tramite il protocollo HTTP, fornendo le relative riposte.  
+Nel nostro caso il client effettua delle rischieste GET specifiche, su dati contenuti in un Data-set in formato csv.  
 
 Il Data-set in questione, rappresenta le spese sostenute, dai Paesi dell'Unione Europea, riguardanti i servizi postali negli anni compresi tra il 2012 e il 2017. 
 In particolare ogni riga del Data-set contiene:
-- la frequenza di rilevazione del dato (indicata con "freq"), che nel nostro caso è sempre annuale ("A").
-- l'unità di misura (indicata con "unit") che può assumere i seguenti valori ("..")
-- l'indicatore delle statistiche postali (indicato con "indicps") che può assumere i seguenti valori("..")
-- la nazione in questione (indicata con "geo"), che può assumere i seguenti valori("..")
+- la frequenza di rilevazione del dato (indicata con "**freq**"), che nel nostro caso è sempre annuale ("A").
+- l'unità di misura (indicata con "**unit**") che può assumere i seguenti valori ("..")
+- l'indicatore delle statistiche postali (indicato con "**indicps**") che può assumere i seguenti valori("..")
+- la nazione in questione (indicata con "**geo**"), che può assumere i seguenti valori("..")
 
 Come accennato prima, la nostra applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
@@ -42,7 +42,14 @@ Inoltre è possibile applicare dei filtri nel seguente modo:
 |--|--|--|
 |Get|/data?attribute="attributo" &operator="operatore"&value="valore"|Restituisce il dataset filtrato|
 |Get|/operation?anno="anno"&attribute="attributo" &operator="operatore"&value="valore"| Restituisce statistiche filtrate sui dati dell'"anno" richiesto|
-|Get|/data?attribute1="attr1" &operator1="op1"&value1="val1" &logicOp="op.logico" &operator2="op2"&value2="val2"|Restituisce il dataset combinando più filtri con op.logico (and, or)|
+|Get|/data?attribute1="attr1" &operator1="op1"&value1="val1" &logicOp="op.logico" &operator2="op2"&value2="val2"|Restituisce il dataset combinando più filtri con op.logico (and, or)
+
+&nbsp;
+
+> **Nota:** Le richieste vengono effettuate solamente tramite il metodo GET , in quanto vengono trattati dei dati tutt'altro che confidenziali, perciò, l'utilizzo del metodo POST, che permette di nascondere le richieste effettuate dalla barra URL di Postman, è pressochè inutile. 
+
+&nbsp;&nbsp;
+
 
 Si potranno utilizzare i seguenti operatori:
 
@@ -56,15 +63,17 @@ Si potranno utilizzare i seguenti operatori:
 | in | trova  il valore richiesto (stringhe/numeri)|
 |nin| trova il valore NON richiesto (stringhe/numeri)|
 
-operatori logici per combinare più filtri
+E i seguenti operatori logici per combinare più filtri
 
 |Operatore Logico|Descrizione  |
 |--|--|
 |and| entrambe le condizioni sono vere |
 |or| almeno una condizione è vera|
 
+&nbsp;&nbsp;&nbsp;
 
-### Esempi applicazione filtri su Postman
+### Esempi applicazione filtri su Postman  
+
 
 |        Descrizione        |Query Params                      
 |----------------|-----------------------------
