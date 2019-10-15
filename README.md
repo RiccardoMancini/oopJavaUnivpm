@@ -1,43 +1,31 @@
-# TITOLO
+# Progetto OOP in Java
 
-Un .... è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
+Il progetto che andremo a descrivere è un'applicazione sviluppata in Java, che grazie allo SpringBoot-Framework, rende possibile la creazione di un Web Service.
+Un Web Service è un sistema software che riceve richieste da un client tramite il protocollo HTTP, fornendo le relative riposte.
+Nel nostro caso il client effettua delle rischieste GET specifiche, su dati contenuti in un Data-set in formato csv.
 
-Il Data-set rappresenta le spese sostenute da diversi Paesi riguardanti i servizi postali negli anni compresi tra il 2012 e il 2017. 
-Ogni dato fa riferimento a:
--  Regione geografica (es. Unione Europea),
--  Indicatore delle statistiche postali (es. PRI901)
--  Paese (es. IT), 
--  Periodo (es. 2012) 
+Il Data-set in questione, rappresenta le spese sostenute, dai Paesi dell'Unione Europea, riguardanti i servizi postali negli anni compresi tra il 2012 e il 2017. 
+In particolare ogni riga del Data-set contiene:
+- la frequenza di rilevazione del dato (indicata con "freq"), che nel nostro caso è sempre annuale ("A").
+- l'unità di misura (indicata con "unit") che può assumere i seguenti valori ("..")
+- l'indicatore delle statistiche postali (indicato con "indicps") che può assumere i seguenti valori("..")
+- la nazione in questione (indicata con "geo"), che può assumere i seguenti valori("..")
 
-La nostra applicazione permette di richiedere mediante API REST (GET) con rotte distinte:
+Come accennato prima, la nostra applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
 -   Restituzione dei metadati, formato JSON, ovvero l’elenco degli attributi, alias degli stessi e tipo di dati contenuti.
 -   Restituzione dei dati riguardanti ogni record, formato JSON.
 -   Restituzione dei dati riguardanti record filtrati, formato JSON.
 -   Restituzione delle statistiche sui dati di uno specifico campo.
 -   Restituzione delle statistiche sui dati di uno specifico campo, su record filtrati.
+-   Restituzione del numero di occorrenze in uno specifico attributo
 
 
 
 
-## Come iniziare
+## Eseguire richieste
 
-### Download
-
-Usando l'ide eclipse si possono seguire i seguenti passi:
-
--   aprire eclipse, nella Show view premere il pulsante "clone a Git Repository".
--   nella finestra che appare, incollare URL di questa repository nella casella URI e procedere.
--   recarsi nel clone della repository che apparirà, tasto destro quindi Import Project (verificare che sia importato come progetto Maven) e procedere.
--   a questo punto potete provare ad eseguire il codice, selezionando "nome_Progetto" tasto destro, "Run as" e quindi "Sprign boot App".
-
-In alternativa su linux senza l'utilizzo del ide eclipse si puo scaricare il file Zip ed estrarlo, da terminale recarsi nella directory, digitare il comando  `mvn clean install`  se il BUILD avrà suceccesso, all'interno del progetto nella directory target si troveranno i file compilati. Per eseguire il programma  `java -jar target/nomeProgettoCompilato.jar`  (oppure  `mvn spring-boot:run`).
-
-Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta  [http://localhost:8080](http://localhost:8080/).
-
-### Eseguire richieste
-
-Per eseguire le richieste GET  utiliziamo un Api-testing come Postman.
+Per eseguire le richieste GET utiliziamo un Api-testing come Postman.
 sarà possibile effettuare le seguenti richieste:
 
 | Tipo | Indirizzo | Descrizione|
@@ -76,16 +64,13 @@ operatori logici per combinare più filtri
 |or| almeno una condizione è vera|
 
 
-#### Esempi applicazione filtri su Postman
+### Esempi applicazione filtri su Postman
 
 |        Descrizione        |Query Params                      
 |----------------|-----------------------------
-|Restituzione dati filtrati|     ![enter image description here](https://lh3.googleusercontent.com/BWpdbtECh8-3Ph10fMqul3Bu_7S-FrAQ-sv_uJXzIdIXr5_1y9zoApxTSBG8VO577C8fXaBBn3y0)     
+|Restituzione dati filtrati|     ![](https://lh3.googleusercontent.com/BWpdbtECh8-3Ph10fMqul3Bu_7S-FrAQ-sv_uJXzIdIXr5_1y9zoApxTSBG8VO577C8fXaBBn3y0)     
 |Restituzione dati filtrati combinando più filtri con op.logico| ![](https://lh3.googleusercontent.com/3ieaRNQ_73wXABhgYgNHm4mGQZocu53akgUbI4jSAyjlK6QaFwBRQKdbV8wf-X8P8O26ChTfPTSv)
-|Restituzione statistiche filtrate sui dati dell'anno richiesto|![enter image description here](https://lh3.googleusercontent.com/5zDBKAI9IWKGCE8qvlYRHF7KoKZmBlo38WK_FYXQuvNq9MT6F3pMzNCX_Rgsr_LoNPYjmLlhScU-)
-
- 
-
+|Restituzione statistiche filtrate sui dati dell'anno richiesto|![](https://lh3.googleusercontent.com/5zDBKAI9IWKGCE8qvlYRHF7KoKZmBlo38WK_FYXQuvNq9MT6F3pMzNCX_Rgsr_LoNPYjmLlhScU-)
 
 
 ## UML
