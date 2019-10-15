@@ -1,6 +1,7 @@
 package it.univpm.JavaEsame.Computing;
 
 import java.util.ArrayList;
+import it.univpm.JavaEsame.Exception.ExceptionsExtend;
 import it.univpm.JavaEsame.ManagingData.AnnoControl;
 import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
@@ -15,10 +16,11 @@ public class CompNum {                             //Classe  utilizzata per effe
 	
 	public CompNum (String Anno, ArrayList<ServiziPostali> arrSP)   //Costruttore a cui viene passato l'anno scelto per effettuare la computazione, e l'ArrayList contenente i dati con cui vogliamo lavorare
 	{
-		
+		try {
 		aC = new AnnoControl(Anno);
 		cella = aC.cellSet();
 	    this.arrSP = new ArrayList<ServiziPostali>(arrSP);
+		}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 	}
 	
 	 public double Avg()                            //Metodo utilizzato per il calcolo della media

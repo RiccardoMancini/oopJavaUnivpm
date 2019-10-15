@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Model.ServiziPostali;
+import it.univpm.JavaEsame.Exception.ExceptionsExtend;
 import it.univpm.JavaEsame.ManagingData.AnnoControl;
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 
@@ -309,8 +310,10 @@ public class FilterUtils
 		
 		if(c)
 		{
+			try {
 			cella = aC.cellSet();
 			selectNum(attribute,operator,value);
+			}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 		}
 		else {
 			
@@ -330,9 +333,11 @@ public class FilterUtils
 		
 		if(c1 && c2)
 		{
+			try {
 			cella1 = aC1.cellSet();
 			cella2 = aC2.cellSet();
 			selectNum_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
+			}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 		}
 		else if(!c1 && !c2)
 		{
@@ -340,13 +345,17 @@ public class FilterUtils
 		}
 		else if(!c1 && c2)
 		{
+			try {
 			cella2 = aC2.cellSet();
 			selectStrNum_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
+			}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 		}
 		else if(c1 && !c2)
 		{
+			try {
 			cella1 = aC1.cellSet();
 			selectNumStr_OR(attribute1, operator1, value1 , attribute2, operator2, value2);
+			}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 		}
 		return out;
 		

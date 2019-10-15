@@ -41,7 +41,7 @@ public class simpleRestController {
 	
 	@RequestMapping(value = "/data", method = RequestMethod.GET, params = {"attribute1", "operator1", "value1", "logicOp", "attribute2", "operator2", "value2"})
 	public ArrayList<ServiziPostali> getData(@RequestParam String attribute1, String operator1, String value1, String logicOp, String attribute2, String operator2, String value2) throws IOException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-	
+		
 		FilterUtils fu = new FilterUtils();
 		if(logicOp.equals("and"))
 		{
@@ -84,12 +84,21 @@ public class simpleRestController {
 	
 	@ExceptionHandler(NoSuchMethodException.class)
     public String handleMyException(Exception  exception) {
-     return "Not so Good";
+	return "Un value dell'attributo non è stato scritto correttamente!\n"
+     		+ "Visitare gli esempi al link http://... per scriverlo correttamente.";
             }  
 	
 	@ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMyException2(Exception  exception) {
-     return "Not so Good";
+     return  "Una key dell'attributo non è stata scritta correttamente!\n"
+      		+ "Visitare gli esempi al link http://... per scriverlo correttamente.";
+            }  
+	
+	@ExceptionHandler(NullPointerException.class)
+    public String handleMyException3(Exception  exception) {
+     return "Controlla la console per maggiori informazioni sull'errore,\n"
+     		+ "oppure consulta gli esempi su come inserire correttamente le keys su Postman\n"
+     		+ "al link http://...";
             }  
 	
 }
