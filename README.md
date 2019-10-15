@@ -75,9 +75,14 @@ operatori logici per combinare più filtri
 |and| entrambe le condizioni sono vere |
 |or| almeno una condizione è vera|
 
+
 #### Esempi applicazione filtri su Postman
 
-
+|        Descrizione        |Query Params                      
+|----------------|-----------------------------
+|Restituzione dati filtrati|     ![enter image description here](https://lh3.googleusercontent.com/BWpdbtECh8-3Ph10fMqul3Bu_7S-FrAQ-sv_uJXzIdIXr5_1y9zoApxTSBG8VO577C8fXaBBn3y0)     
+|Restituzione dati filtrati combinando più filtri con op.logico| ![](https://lh3.googleusercontent.com/3ieaRNQ_73wXABhgYgNHm4mGQZocu53akgUbI4jSAyjlK6QaFwBRQKdbV8wf-X8P8O26ChTfPTSv)
+|Restituzione statistiche filtrate sui dati dell'anno richiesto|![enter image description here](https://lh3.googleusercontent.com/5zDBKAI9IWKGCE8qvlYRHF7KoKZmBlo38WK_FYXQuvNq9MT6F3pMzNCX_Rgsr_LoNPYjmLlhScU-)
 
  
 
