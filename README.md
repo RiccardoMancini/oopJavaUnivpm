@@ -50,8 +50,8 @@ Quindi durante il parsing ogni flag associato ad un valore numerico viene trascu
 
 ## Eseguire richieste
 
-Per eseguire le richieste GET utiliziamo un Api-testing come Postman.
-sarà possibile effettuare le seguenti richieste:
+Per eseguire le richieste GET è possibile utilizzare Postman, in quanto API-Testing, scrivendo nella barra degli indirizzi "http://localhost:8080/" seguito da:
+
 
 | Tipo | Indirizzo | Descrizione|
 |---|---|---|
@@ -97,8 +97,7 @@ E i seguenti operatori logici per combinare più filtri
 
 &nbsp;&nbsp;&nbsp;
 
-### Esempi applicazione filtri su Postman  
-
+### Come applicare i filtri su Postman  
 
 |        Descrizione        |Query Params                      
 |----------------|-----------------------------
