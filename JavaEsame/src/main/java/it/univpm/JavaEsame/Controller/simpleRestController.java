@@ -22,23 +22,35 @@ import it.univpm.JavaEsame.Model.ServiziPostali;
 @RestController
 public class simpleRestController {
 	
+	/**
+	 * Metodo che restituisce la lista dei metadata
+	 */
 	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
 	public ArrayList<Metadata> getMetadata() {
 		return new ArrayMetadata().getArrayMetadata();
 	}
 	
+	/**
+	 * Metodo che restituisce la lista dei dati
+	 */
 	@RequestMapping(value = "/data", method = RequestMethod.GET)
 	public ArrayList<ServiziPostali> getData()
 	{
 		return ArrayData.getData();
 	}
 	
+	/**
+	 * Metodo che restituisce la lista dei dati filtrati
+	 */
 	@RequestMapping(value = "/data", method = RequestMethod.GET, params = {"attribute", "operator", "value"})
 	public ArrayList<ServiziPostali> getData(@RequestParam String attribute, String operator, String value) throws IOException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 	
 		return new FilterUtils().select(attribute, operator, value);
 	}
 	
+	/**
+	 * Metodo che restituisce la lista dei dati filtrati applicandoci gli operatori logici AND e OR
+	 */
 	@RequestMapping(value = "/data", method = RequestMethod.GET, params = {"attribute1", "operator1", "value1", "logicOp", "attribute2", "operator2", "value2"})
 	public ArrayList<ServiziPostali> getData(@RequestParam String attribute1, String operator1, String value1, String logicOp, String attribute2, String operator2, String value2) throws IOException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
@@ -56,6 +68,9 @@ public class simpleRestController {
 		
 	}
 	
+	/**
+	 * Metodo che restituisce la lista delle statistiche sull' anno scelto
+	 */
 	@RequestMapping(value = "/operation", method = RequestMethod.GET)
 	public ArrayList<Operation> getOperation(@RequestParam String anno) {
 			
@@ -63,6 +78,9 @@ public class simpleRestController {
 		return op.arrayOperation();
 		}
 	
+	/**
+	 * Metodo che restituisce la lista delle statistiche filtrate sull' anno scelto
+	 */
 	@RequestMapping(value = "/operation", method = RequestMethod.GET, params = {"anno", "attribute", "operator", "value"})
 	public ArrayList<Operation> getOperation(@RequestParam String anno, String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 			
@@ -70,6 +88,9 @@ public class simpleRestController {
 		return op.arrayOperation();
 		}
 	
+	/**
+	 * Metodo che restituisce il numero delle occorrenze dell'attributo richiesto
+	 */
 	@RequestMapping(value = "/occorrence", method = RequestMethod.GET)
 	public HashMap<String, Integer> getOccorrence(@RequestParam String attribute) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Model.ServiziPostali;
 
+/**
+ * Classe che analizza il dataset CSV
+ *
+ */
 public class Parsing {
 	
 	private ArrayList<ServiziPostali> spost;
@@ -20,6 +24,10 @@ public class Parsing {
 	
 	}
 	
+	/**
+	 * Metodo che analizza il file passato e crea 
+	 * un ArrayList di oggetti contenente i record del dataset
+	 */
 	public void parser(String filename) throws IOException
 	{
 		                    
@@ -39,7 +47,7 @@ public class Parsing {
 					  							 new StringControl(row[9]).control()}));
 			
 			
-			ArrayData.setData(spost);                                                      // Very importante!!!!!!!!
+			ArrayData.setData(spost);                                                     
 			
 			
 		}

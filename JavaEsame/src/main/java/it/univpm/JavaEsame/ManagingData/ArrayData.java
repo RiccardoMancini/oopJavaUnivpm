@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Model.ServiziPostali;
 
-public class ArrayData {								//Classe contenente un ArrayList statico di ServiziPostali utilizzato per salvare i dati del dataset
+/**
+ * Classe contenente un ArrayList statico di ServiziPostali utilizzato per salvare i dati del dataset
+ *
+ */
+public class ArrayData {								
 
 public static ArrayList<ServiziPostali> data;
 	

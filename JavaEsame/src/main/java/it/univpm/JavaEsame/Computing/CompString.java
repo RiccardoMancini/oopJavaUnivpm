@@ -6,21 +6,33 @@ import java.util.HashMap;
 
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 
-public class CompString {									//Classe  utilizzata per effettuare il conteggio degli elementi unici indicando il numero delle occorrenze 
+/**
+ * Classe  utilizzata per effettuare il conteggio 
+ * degli elementi unici indicando il numero delle occorrenze 
+ */
+public class CompString {									
  
     HashMap<String, Integer> stringCount;			
     private String attribute;						
     Method metodo;									
 
    
-    public  CompString(String attribute)					//Costruttore a cui viene passato l'attributo del quale si vuole conteggiare le occorrenze					
+    /**
+     * Costruttore a cui viene passato l'attributo del quale si vuole conteggiare le occorrenze,
+     * e inizializzazione della tabella HashMap con key di tipo stringa e value di tipo integer
+     * 
+     */
+    public  CompString(String attribute)								
     {
-    	stringCount = new HashMap<String, Integer>(); 		//inizializzazione della tabella HashMap con key di tipo stringa e value di tipo integer
+    	stringCount = new HashMap<String, Integer>(); 		
 	    this.attribute = attribute;
 	   
     }
     
-    //Metodo che restituisce l' HashMap con i record dell'attributo scelto, indicandone la loro ricorrenza
+ 
+    /**
+     * Metodo che restituisce l' HashMap con i record dell'attributo scelto, indicandone la loro ricorrenza
+     */
     public HashMap <String, Integer> Occorrence() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 
     {

@@ -4,21 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import it.univpm.JavaEsame.Exception.ExceptionsExtend;
 
-public class Buffer {						//Classe che decodifica il JSON e scarica il dataset CSV
+/**
+ * Classe che decodifica il JSON e scarica il dataset CSV
+ *
+ */
+public class Buffer {						
 
 	private BufferedReader br;
 	private String lstr;
 	private String filename;
 	
 	
-	public Buffer(URL url) {		//Metodo che mette in una stringa tutto il JSON da elaborare	
+	/**
+	 * Costruttore che mette in una stringa tutto il JSON da elaborare
+	 */
+	public Buffer(URL url) {			
 		try {
 		this.lstr = "";
 		String str = "";
@@ -35,6 +41,11 @@ public class Buffer {						//Classe che decodifica il JSON e scarica il dataset 
 		
 	}
 	
+	/**
+	 * Metodo che elabora la stringa contente il JSON, 
+	 * andando ad individuare l'url corrispondendente al dataset CSV, per poi salvarlo in un file
+	 * e restituire il nome del file
+	 */
 	public String file() throws  IOException
 	{
 		this.filename = "dataset.csv";

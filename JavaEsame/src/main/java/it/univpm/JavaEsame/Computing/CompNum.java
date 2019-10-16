@@ -7,14 +7,22 @@ import it.univpm.JavaEsame.Model.Operation;
 import it.univpm.JavaEsame.Model.ServiziPostali;
 
 
-public class CompNum {                             //Classe  utilizzata per effettuare la computazione sull'attributo "anno" 
+/**
+ * Classe  utilizzata per effettuare la computazione sull'attributo "anno" 
+ *
+ */
+public class CompNum {                            
 	
 	private int cella;
 	private ArrayList<Operation> arrayOp;
 	private ArrayList<ServiziPostali> arrSP;
 	private AnnoControl aC;
 	
-	public CompNum (String Anno, ArrayList<ServiziPostali> arrSP)   //Costruttore a cui viene passato l'anno scelto per effettuare la computazione, e l'ArrayList contenente i dati con cui vogliamo lavorare
+	/**
+	 * Costruttore a cui viene passato l'anno scelto per effettuare la computazione, 
+	 * e l'ArrayList contenente i dati con cui vogliamo lavorare
+	 */
+	public CompNum (String Anno, ArrayList<ServiziPostali> arrSP)   //
 	{
 		try {
 		aC = new AnnoControl(Anno);
@@ -23,14 +31,20 @@ public class CompNum {                             //Classe  utilizzata per effe
 		}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 	}
 	
-	 public double Avg()                            //Metodo utilizzato per il calcolo della media
+	 /**
+	 * Metodo utilizzato per il calcolo della media
+	 */
+	public double Avg()                        
 	 {
 			
 		return Sum()/Count();
 			
 	 }
 	
-	public double Max()                            //Metodo utilizzato per il calcolo del massimo
+	/**
+	 * Metodo utilizzato per il calcolo del massimo
+	 */
+	public double Max()                           
 	{
 		double m = 0;
 		for (int i=0; i < arrSP.size(); i++)
@@ -44,7 +58,10 @@ public class CompNum {                             //Classe  utilizzata per effe
 		return m;
 	}
 	
-	public double Min()                           //Metodo utilizzato per il calcolo del minimo
+	/**
+	 * Metodo utilizzato per il calcolo del minimo
+	 */
+	public double Min()                           
 	{
 		double m=0;
 		
@@ -61,7 +78,10 @@ public class CompNum {                             //Classe  utilizzata per effe
 		return m;
 	}
 	
-	public double Dev_std()                      //Metodo utilizzato per il calcolo della deviazione standard
+	/**
+	 * Metodo utilizzato per il calcolo della deviazione standard
+	 */
+	public double Dev_std()                     
 	{
 		double count = 0, standardDeviation = 0;
       
@@ -76,7 +96,10 @@ public class CompNum {                             //Classe  utilizzata per effe
         return (double) Math.sqrt(standardDeviation/count);
 	}
 	
-	public double Sum()                         //Metodo utilizzato per il calcolo della somma 
+	/**
+	 * Metodo utilizzato per il calcolo della somma 
+	 */
+	public double Sum()                       
 	{
 		double Somma = 0;
 	      
@@ -91,7 +114,10 @@ public class CompNum {                             //Classe  utilizzata per effe
 		return Somma;
 	}
 	
-	public int Count()                           //Metodo utilizzato per il conteggio di elementi
+	/**
+	 * Metodo utilizzato per il conteggio di elementi
+	 */
+	public int Count()                           
 	{
 		int count = 0;
 	      
@@ -104,7 +130,10 @@ public class CompNum {                             //Classe  utilizzata per effe
         return count;
 	}
 	
-	public ArrayList<Operation> arrayOperation()  //Metodo che restituisce un Arraylist di tipo Operation
+	/**
+	 * Metodo che restituisce un Arraylist di tipo Operation
+	 */
+	public ArrayList<Operation> arrayOperation()  
 	{
 		arrayOp = new ArrayList<Operation>();
         arrayOp.add(new Operation(Avg(), Max(), Min(), Dev_std(), Sum(), Count()));

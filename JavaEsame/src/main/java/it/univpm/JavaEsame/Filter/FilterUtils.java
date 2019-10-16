@@ -10,6 +10,10 @@ import it.univpm.JavaEsame.ManagingData.AnnoControl;
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 
 
+/**
+ * Classe che implementa il comportamento dei filtri sui dati
+ *
+ */
 public class FilterUtils 
 {
 	private static ArrayList<ServiziPostali> out,out2;
@@ -24,6 +28,10 @@ public class FilterUtils
 		out2 = new ArrayList<ServiziPostali>();
 	}
 	
+	/**
+	 * Metodo che restituisce un valore booleano dopo aver confrontato i valori passati
+	 * con l'operatore condizionale richiesto
+	 */
 	public static boolean check(Object value1, String operator, Object[] value2)
 	{
 		if (value2.length==1)	
@@ -87,6 +95,10 @@ public class FilterUtils
 		return false;			
 	 }
 	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * all'anno passato come parametro e che rispettano la condizione richiesta
+	 */
 	public void selectNum(String attribute, String operator, String value) {
 		
 		String[] value1 = value.split(",");
@@ -135,6 +147,10 @@ public class FilterUtils
 		
 	}
 	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * all'attributo passato come paramentro e che rispettano la condizione richiesta
+	 */
 	public void selectStr(String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
 		String[] value1 = value.split(",");
@@ -170,6 +186,11 @@ public class FilterUtils
 		
 	}
 	
+	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * agli anni passati come parametri e che rispettano le condizioni richieste
+	 */
 	public void selectNum_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) {
 		
 		String[] valueS1 = value1.split(",");
@@ -213,6 +234,10 @@ public class FilterUtils
 			}	
 	}
 	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * agli attributi passati come parametri e che rispettano le condizioni richieste
+	 */
 	public void selectStr_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
 		String[] valueS1 = value1.split(",");
@@ -234,6 +259,10 @@ public class FilterUtils
 	   
 	}
 	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * all'attributo e all'anno passati come parametri e che rispettano le condizioni richieste
+	 */
 	public void selectStrNum_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException	
 	{
 		String[] valueS1 = value1.split(",");
@@ -269,6 +298,10 @@ public class FilterUtils
 		
 	}
 	
+	/**
+	 * Metodo che popola un ArrayList di oggetti con i record del Dataset che corrispondono
+	 * all'anno e all'attributo passati come parametri e che rispettano le condizioni richieste
+	 */
 	public void selectNumStr_OR(String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
 		String[] valueS1 = value1.split(",");
@@ -302,6 +335,9 @@ public class FilterUtils
 	        }
 	}	
 	
+	/**
+	 * Metodo che seleziona i filtri corrispondenti all'attributo/anno, all'operatore e al valore passati come parametri
+	 */
 	public ArrayList<ServiziPostali> select( String attribute, String operator, String value) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	 {
 	
@@ -323,6 +359,9 @@ public class FilterUtils
 		return out;
 	}
 
+	/**
+	 * Metodo che seleziona i filtri corrispondenti agli attributi/anni, agli operatori e ai valori passati come parametri
+	 */
 	public ArrayList<ServiziPostali> select_OR( String attribute1, String operator1, String value1 ,String attribute2, String operator2, String value2) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
 	{
 		AnnoControl aC1 = new AnnoControl(attribute1);
@@ -367,8 +406,5 @@ public class FilterUtils
 		return out;
 	}
 
-	public static void setOut(ArrayList<ServiziPostali> out) {
-		FilterUtils.out = out;
-	}
 }
 

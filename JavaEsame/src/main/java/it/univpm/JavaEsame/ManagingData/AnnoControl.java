@@ -2,7 +2,11 @@ package it.univpm.JavaEsame.ManagingData;
 
 import it.univpm.JavaEsame.Exception.ExceptionsExtend;
 
-public class AnnoControl {                   //Classe contenente metodi utili per la gestione dell'anno inserito
+/**
+ * Classe contenente metodi utili per la gestione dell'anno inserito
+ *
+ */
+public class AnnoControl {                   
 	
 	private String anno;
 	
@@ -12,7 +16,10 @@ public class AnnoControl {                   //Classe contenente metodi utili pe
 	
 	}
 	
-	public boolean control()			//metodo che restituisce true se l'anno inserito esiste nel Metadata
+	/**
+	 * metodo che restituisce true se l'anno inserito esiste nel Metadata
+	 */
+	public boolean control()			
 	{
 		switch (anno) {
 		case "2012": return true;
@@ -26,7 +33,10 @@ public class AnnoControl {                   //Classe contenente metodi utili pe
 		
 	}
 	
-	public int cellSet()  throws ExceptionsExtend				//metodo che restituisce un numero da 0 a 5 in corrispondenza di ogni anno
+	/**
+	 * metodo che restituisce un numero da 0 a 5 in corrispondenza di ogni anno
+	 */
+	public int cellSet()  throws ExceptionsExtend				
 	{
 	
 		

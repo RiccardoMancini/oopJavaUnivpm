@@ -3,11 +3,18 @@ package it.univpm.JavaEsame.ManagingData;
 import java.util.ArrayList;
 import it.univpm.JavaEsame.Model.Metadata;
 
-public class ArrayMetadata {				//Classe contenente un ArrayList di Metadata
+/**
+ * Classe contenente un ArrayList di Metadata
+ *
+ */
+public class ArrayMetadata {				
 	
 	private ArrayList<Metadata> arrayMetadata;
 	
-	public ArrayMetadata()					//Costruttore che inizializza l'Arraylist, aggiungendoci poi i metadati esistenti
+	/**
+	 * Costruttore che inizializza l'Arraylist, aggiungendoci poi i metadati esistenti
+	 */
+	public ArrayMetadata()					
 	{
 		arrayMetadata = new ArrayList<Metadata>();
 		arrayMetadata.add(new Metadata("Freq","Frequenza","String"));
