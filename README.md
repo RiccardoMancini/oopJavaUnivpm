@@ -20,7 +20,7 @@ Nella seguente tabella vediamo che valori possono assumere i precedenti attribut
 | indicps | ![](https://lh3.googleusercontent.com/TL2rQqbErnKzGMBpr-gY3hhzOl7clF3qVP8oYL7StUSyYNFePbRo15G5-olI5SOwcnDQqY_3COjR)|
 | geo | ![](https://lh3.googleusercontent.com/_8QBZ5tL0j6BVbj6fJiZ1ZmJB8X9iHYzYYezkmZcT1yYjkLEg_L7HjlPP3K5CBF-t_WUU4nCi0nw)|
 
-Come accennato prima, la nostra applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
+Come accennato prima, l'applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
 -   Restituzione dei metadati, formato JSON, ovvero l’elenco degli attributi, alias degli stessi e tipo di dati contenuti.
 -   Restituzione dei dati riguardanti ogni record, formato JSON.
