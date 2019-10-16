@@ -4,12 +4,21 @@ Il progetto che andremo a descrivere è un'applicazione sviluppata in Java, che 
 Un Web Service è un sistema software che riceve richieste da un client tramite il protocollo HTTP, fornendo le relative riposte.  
 Nel nostro caso il client effettua delle rischieste GET specifiche, su dati contenuti in un Data-set in formato csv.  
 
-Il Data-set in questione, rappresenta le spese sostenute, dai Paesi dell'Unione Europea, riguardanti i servizi postali negli anni compresi tra il 2012 e il 2017. 
-In particolare ogni riga del Data-set contiene:
-- la frequenza di rilevazione del dato (indicata con "**freq**"), che nel nostro caso è sempre annuale ("A").
-- l'unità di misura (indicata con "**unit**") che può assumere i seguenti valori ("..")
-- l'indicatore delle statistiche postali (indicato con "**indicps**") che può assumere i seguenti valori("..")
-- la nazione in questione (indicata con "**geo**"), che può assumere i seguenti valori("..")
+Il Data-set in questione, rappresenta le spese sostenute, dai Paesi dell'Unione Europea, riguardanti i servizi postali negli anni compresi tra il 2012 e il 2017. In particolare ogni riga del Data-set contiene:
+
+-   la frequenza di rilevazione del dato (indicata con "**freq**");
+-   l'unità di misura (indicata con "**unit**");
+-   l'indicatore delle statistiche postali (indicato con "**indicps**");
+-   la nazione in questione (indicata con "**geo**").  
+
+Nella seguente tabella vediamo che valori possono assumere i precedenti attributi:  
+
+|Attributi| Valori ammessi |
+|--|--|
+| freq | "A" |
+| unit |![](https://lh3.googleusercontent.com/RDY5tb5LMO7oOMdxzonPcW4unLzrzcOM-90k53U1F5qCesozMwXYP_tCdbRXb93xO4gqc5G8AwBU) |
+| indicps | ![](https://lh3.googleusercontent.com/TL2rQqbErnKzGMBpr-gY3hhzOl7clF3qVP8oYL7StUSyYNFePbRo15G5-olI5SOwcnDQqY_3COjR)|
+| geo | ![](https://lh3.googleusercontent.com/_8QBZ5tL0j6BVbj6fJiZ1ZmJB8X9iHYzYYezkmZcT1yYjkLEg_L7HjlPP3K5CBF-t_WUU4nCi0nw)|
 
 Come accennato prima, la nostra applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
