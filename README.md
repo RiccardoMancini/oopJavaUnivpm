@@ -29,6 +29,22 @@ Come accennato prima, la nostra applicazione permette di richiedere, mediante AP
 -   Restituzione delle statistiche sui dati di uno specifico campo, su record filtrati.
 -   Restituzione del numero di occorrenze in uno specifico attributo
 
+## Gestione data
+Il dataset all'interno del file csv presenta alcuni dati affiancati a dei flag e alcuni dati non disponibili.
+Si è reso necessario gestirli considerando solo valori numerici in quanto eventuali flag possono creare complicazioni ai fini delle computazioni.
+ 
+Quindi durante il parsing ogni flag associato ad un valore numerico viene trascurato, mentre se il flag non è associato a nessun valore numerico viene considerato un valore negativo (-1), in modo da poter essere facilmente discriminabile durante le computazioni.
+
+
+| flag | significato | gestione|
+|--|--|:--:|
+| : | not available | -1
+|:c| not available, confidencial| -1
+|:bc| not available, break in time series, confidencial|  -1|
+|:z|not available, not applicable| -1|
+|b| break in time series| solo valore numerico
+|d| definition differs| solo valore numerico
+|e| estimated| solo valore numerico
 
 
 
