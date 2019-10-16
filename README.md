@@ -46,7 +46,7 @@ Inoltre è possibile applicare dei filtri nel seguente modo:
 
 &nbsp;
 
-> **Nota:** Le richieste vengono effettuate solamente tramite il metodo GET , in quanto vengono trattati dei dati tutt'altro che confidenziali, perciò, l'utilizzo del metodo POST, che permette di nascondere le richieste effettuate dalla barra URL di Postman, è pressochè inutile. 
+> **Nota:** Le richieste vengono effettuate solamente tramite il metodo GET , in quanto vengono trattati dei dati tutt'altro che confidenziali, perciò, l'utilizzo del metodo POST (che permette di nascondere i parametri delle richieste, non mostrandoli nella barra degli indirizzi) è pressochè inutile. 
 
 &nbsp;&nbsp;
 
