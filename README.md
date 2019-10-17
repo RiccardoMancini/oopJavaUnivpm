@@ -20,14 +20,8 @@ Nella seguente tabella vediamo che valori possono assumere i precedenti attribut
 | indicps | ![](https://lh3.googleusercontent.com/TL2rQqbErnKzGMBpr-gY3hhzOl7clF3qVP8oYL7StUSyYNFePbRo15G5-olI5SOwcnDQqY_3COjR)|
 | geo | ![](https://lh3.googleusercontent.com/_8QBZ5tL0j6BVbj6fJiZ1ZmJB8X9iHYzYYezkmZcT1yYjkLEg_L7HjlPP3K5CBF-t_WUU4nCi0nw)|
 
-Come accennato prima, l'applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
--   Restituzione dei metadati, formato JSON, ovvero l’elenco degli attributi, alias degli stessi e tipo di dati contenuti.
--   Restituzione dei dati riguardanti ogni record, formato JSON.
--   Restituzione dei dati riguardanti record filtrati, formato JSON.
--   Restituzione delle statistiche sui dati di uno specifico campo.
--   Restituzione delle statistiche sui dati di uno specifico campo, su record filtrati.
--   Restituzione del numero di occorrenze in uno specifico attributo
+
 
 ## Gestione data
 Il dataset all'interno del file csv presenta alcuni dati affiancati a dei flag e alcuni dati non disponibili.
@@ -49,7 +43,16 @@ Quindi durante il parsing ogni flag associato ad un valore numerico viene trascu
 
 
 ## Eseguire richieste
+Come accennato prima, l'applicazione permette di richiedere, mediante API REST (GET) con rotte distinte, la:
 
+-   Restituzione dei metadati, formato JSON, ovvero l’elenco degli attributi, alias degli stessi e tipo di dati contenuti.
+-   Restituzione dei dati riguardanti ogni record, formato JSON.
+-   Restituzione dei dati riguardanti record filtrati, formato JSON.
+-   Restituzione delle statistiche sui dati di uno specifico campo.
+-   Restituzione delle statistiche sui dati di uno specifico campo, su record filtrati.
+-   Restituzione del numero di occorrenze in uno specifico attributo
+
+### Come eseguire le richieste
 Per eseguire le richieste GET è possibile utilizzare Postman, in quanto API-Testing, scrivendo nella barra degli indirizzi "http://localhost:8080/" seguito da:
 
 
@@ -61,7 +64,7 @@ Per eseguire le richieste GET è possibile utilizzare Postman, in quanto API-Tes
 |Get|/occorence?attribute="attributo"| Restituisce il numero di occorrence dell'"attributo" richiesto|
 
 
-Inoltre è possibile applicare dei filtri nel seguente modo:
+Inoltre è possibile applicare dei filtri nel seguente modo dove le indicazioni tra " " corrispondono alle richieste da inserire:
 
 | Tipo | Indirizzo | Descrizione|
 |--|--|--|
@@ -107,14 +110,14 @@ E i seguenti operatori logici per combinare più filtri
 
 
 ## UML
+### Use Case Diagram
+![enter image description here](https://lh3.googleusercontent.com/8fNAPms7xfX1hqWU7qdBucC0OWAj1dL-ecxz2U6Zue2vZrT3IjsBVJaGMYfh9M4zVk-Jc_Zc_G8 "Use_Case_Diagram")
+### Activity Diagram
 
-blablablablabablablalbalbalbalbalblablablabalbalba
+![enter image description here](https://lh3.googleusercontent.com/IEDgeXg-QiP9b-JjyOKN3mZQp4ebF95-AMXETSeZg9qD_1i1Q9-bfMnl_Ill9vrjZhedXXvuFSM "Activity_Diagram")
+### Sequence Diagram
 
-foto 
-
-foto 
-
-immgine 
+![enter image description here](https://lh3.googleusercontent.com/eNjggLdRmrZXxTmDm4OkW-GebvQp9liII3gbipWJsEsB62SeoFk1lKHJ3_nl-s4Qek3eViqgxyo "Sequence_diagram")
 
 ## Autori
 
