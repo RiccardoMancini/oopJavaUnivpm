@@ -25,7 +25,7 @@ Nella seguente tabella vediamo che valori possono assumere i precedenti attribut
 
 ## Gestione data
 Il dataset all'interno del file csv presenta alcuni dati affiancati a dei flag e alcuni dati non disponibili.
-Si è reso necessario gestirli considerando solo valori numerici in quanto eventuali flag possono creare complicazioni ai fini delle computazioni.
+E' stato necessario gestirli considerando solo valori numerici in quanto eventuali flag avrebbero potuto creare complicazioni ai fini delle computazioni.
  
 Quindi durante il parsing ogni flag associato ad un valore numerico viene trascurato, mentre se il flag non è associato a nessun valore numerico viene considerato un valore negativo (-1), in modo da poter essere facilmente discriminabile durante le computazioni.
 
