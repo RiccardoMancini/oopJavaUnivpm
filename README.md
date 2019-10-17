@@ -117,7 +117,7 @@ E i seguenti operatori logici per combinare più filtri
 ![enter image description here](https://lh3.googleusercontent.com/IEDgeXg-QiP9b-JjyOKN3mZQp4ebF95-AMXETSeZg9qD_1i1Q9-bfMnl_Ill9vrjZhedXXvuFSM "Activity_Diagram")
 ### Sequence Diagram
 
-![enter image description here](https://lh3.googleusercontent.com/eNjggLdRmrZXxTmDm4OkW-GebvQp9liII3gbipWJsEsB62SeoFk1lKHJ3_nl-s4Qek3eViqgxyo "Sequence_diagram")
+![enter image description here](https://lh3.googleusercontent.com/ieT1K0Y7IJjijcb-W2hdNUFzjkvHZWH6sRdZZGZscIg8ZoLhs5YiexjRmmZvkuCKQeBzY-jAo9I "Sequence_Diagram")
 
 ## Autori
 
