@@ -19,7 +19,7 @@ public class Parsing {
 	
 	public Parsing()  {
 		
-		this.spost = new ArrayList<ServiziPostali>();                    
+		spost = new ArrayList<ServiziPostali>();                    
 		
 	
 	}
@@ -31,7 +31,7 @@ public class Parsing {
 	public void parser(String filename) throws IOException
 	{
 		                    
-		this.csvReader = new BufferedReader(new FileReader(filename));
+		csvReader = new BufferedReader(new FileReader(filename));
 		csvReader.readLine();
 		while((str = csvReader.readLine()) != null)
 		{

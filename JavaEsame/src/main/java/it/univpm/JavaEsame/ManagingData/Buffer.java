@@ -26,15 +26,15 @@ public class Buffer {
 	 */
 	public Buffer(URL url) {			
 		try {
-		this.lstr = "";
-		String str = "";
-		br = new BufferedReader(new InputStreamReader(url.openStream()));
-		while ((str = br.readLine()) != null) {
+				lstr = "";
+				String str = "";
+				br = new BufferedReader(new InputStreamReader(url.openStream()));
+				while ((str = br.readLine()) != null) {
 			
-			lstr += str;
+					lstr += str;
 		
-		}
-		br.close();
+				}
+				br.close();
 		}catch(Exception e) {System.out.println(new ExceptionsExtend().abortFileCreation());
 								 System.exit(1); }
 		
@@ -48,7 +48,7 @@ public class Buffer {
 	 */
 	public String file() throws  IOException
 	{
-		this.filename = "dataset.csv";
+		filename = "dataset.csv";
 		
 		JSONObject obj= new JSONObject(lstr);
 		JSONArray arr = obj.getJSONObject("result").getJSONArray("resources");

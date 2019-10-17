@@ -25,9 +25,9 @@ public class CompNum {
 	public CompNum (String Anno, ArrayList<ServiziPostali> arrSP)   //
 	{
 		try {
-		aC = new AnnoControl(Anno);
-		cella = aC.cellSet();
-	    this.arrSP = new ArrayList<ServiziPostali>(arrSP);
+			aC = new AnnoControl(Anno);
+			cella = aC.cellSet();
+			this.arrSP = new ArrayList<ServiziPostali>(arrSP);
 		}catch(ExceptionsExtend e) {System.out.println(e.annoExc());}
 	}
 	

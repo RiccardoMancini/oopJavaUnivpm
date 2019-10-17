@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import it.univpm.JavaEsame.Computing.CompNum;
 import it.univpm.JavaEsame.Computing.CompString;
+import it.univpm.JavaEsame.Exception.ExceptionsExtend;
 import it.univpm.JavaEsame.Filter.FilterUtils;
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 import it.univpm.JavaEsame.ManagingData.ArrayMetadata;
@@ -97,29 +98,30 @@ public class simpleRestController {
 			return new CompString(attribute).Occorrence();
 		}
 
-	/**
-	 * 
-	 * Gestione eccezioni per quanto riguarda l'errata scrittura su Postman
-	 * 
-	 */
+
 	
+	/**
+	 * Richiamo eccezione riguardante l'errata scrittura di un value
+	 */
 	@ExceptionHandler(NoSuchMethodException.class)
     public String handleMyException(Exception  exception) {
-	return "Un value dell'attributo non è stato scritto correttamente!\n"
-     		+ "Visitare gli esempi al link http://... per scriverlo correttamente.";
+	return new ExceptionsExtend().valErr();
             }  
 	
+	/**
+	 * Richiamo eccezione riguardante l'errata scrittura di una key
+	 */
 	@ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMyException2(Exception  exception) {
-     return  "Una key dell'attributo non è stata scritta correttamente!\n"
-      		+ "Visitare gli esempi al link http://... per scriverlo correttamente.";
+     return new ExceptionsExtend().keyErr();
             }  
 	
+	/**
+	 * Richiamo eccezione riguardante un anno scritto non valido
+	 */
 	@ExceptionHandler(NullPointerException.class)
     public String handleMyException3(Exception  exception) {
-     return "Controlla la console per maggiori informazioni sull'errore,\n"
-     		+ "oppure consulta gli esempi su come inserire correttamente le keys su Postman\n"
-     		+ "al link http://...";
+     return new ExceptionsExtend().annoErr();
             }  
 	
 }
