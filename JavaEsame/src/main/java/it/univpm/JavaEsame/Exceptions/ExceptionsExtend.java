@@ -1,4 +1,4 @@
-package it.univpm.JavaEsame.Exception;
+package it.univpm.JavaEsame.Exceptions;
 
 public class ExceptionsExtend extends Exception{
 	

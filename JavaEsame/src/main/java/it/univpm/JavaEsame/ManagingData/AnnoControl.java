@@ -1,6 +1,6 @@
 package it.univpm.JavaEsame.ManagingData;
 
-import it.univpm.JavaEsame.Exception.ExceptionsExtend;
+import it.univpm.JavaEsame.Exceptions.ExceptionsExtend;
 
 /**
  * Classe contenente metodi utili per la gestione dell'anno inserito

@@ -8,7 +8,7 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import it.univpm.JavaEsame.Exception.ExceptionsExtend;
+import it.univpm.JavaEsame.Exceptions.ExceptionsExtend;
 
 /**
  * Classe che decodifica il JSON e scarica il dataset CSV

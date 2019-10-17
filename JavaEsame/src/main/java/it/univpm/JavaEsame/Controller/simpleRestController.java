@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import it.univpm.JavaEsame.Computing.CompNum;
 import it.univpm.JavaEsame.Computing.CompString;
-import it.univpm.JavaEsame.Exception.ExceptionsExtend;
+import it.univpm.JavaEsame.Exceptions.ExceptionsExtend;
 import it.univpm.JavaEsame.Filter.FilterUtils;
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 import it.univpm.JavaEsame.ManagingData.ArrayMetadata;

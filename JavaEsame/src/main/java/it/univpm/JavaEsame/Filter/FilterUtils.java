@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import it.univpm.JavaEsame.Model.ServiziPostali;
-import it.univpm.JavaEsame.Exception.ExceptionsExtend;
+import it.univpm.JavaEsame.Exceptions.ExceptionsExtend;
 import it.univpm.JavaEsame.ManagingData.AnnoControl;
 import it.univpm.JavaEsame.ManagingData.ArrayData;
 
